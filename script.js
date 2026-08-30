@@ -146,7 +146,7 @@ function criarModalDetalhes() {
             <button onclick="fecharModal()" style="position: absolute; top: 15px; right: 15px; background: #333; color: #fff; border: none; font-size: 18px; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
             
             <div style="text-align: center; margin-bottom: 15px; position: relative;">
-                <img id="modalImg" src="" style="width: 100%; max-height: 320px; object-fit: contain; border-radius: 8px; background: #111;">
+                <img id="modalImg" src="" style="width: 100%; max-height: 320px; object-fit: contain; border-radius: 8px; background: #111;" onerror="this.src='https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&auto=format&fit=crop&q=60'">
                 <div id="modalBotoesTroca" style="display:none;">
                     <button onclick="mudarFotoModal(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.6); color: #fff; border: none; padding: 10px; cursor: pointer; border-radius: 50%;">❮</button>
                     <button onclick="mudarFotoModal(1)" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.6); color: #fff; border: none; padding: 10px; cursor: pointer; border-radius: 50%;">❯</button>
@@ -169,8 +169,11 @@ function criarModalDetalhes() {
 let produtoAtualModal = null;
 let fotoIndexModal = 0;
 
-function abrirDetalhes(index) {
-    produtoAtualModal = produtos[index];
+function abrirDetalhes(indexOriginal) {
+    // Acha o produto correto mesmo se estiver filtrado na pesquisa
+    const produto = produtos[indexOriginal];
+    if (!produto) return;
+    produtoAtualModal = produto;
     fotoIndexModal = 0;
     atualizarConteudoModal();
     document.getElementById('modalDetalhes').style.display = 'flex';
@@ -205,6 +208,26 @@ function atualizarConteudoModal() {
     }
 }
 
+// CONFIGURAR BARRA DE PESQUISA EM TEMPO REAL
+function configurarPesquisa() {
+    const inputBusca = document.querySelector('input[placeholder*="Pesquisar"]');
+    if (!inputBusca) return;
+    
+    inputBusca.addEventListener('input', (e) => {
+        const termo = e.target.value.toLowerCase().trim();
+        const cards = document.querySelectorAll('.bone-card');
+        
+        cards.forEach(card => {
+            const titulo = card.querySelector('.bone-titulo').innerText.toLowerCase();
+            if (titulo.includes(termo)) {
+                card.style.display = "flex";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+}
+
 // FUNÇÃO PARA GERAR OS CARDS NA TELA
 function carregarProdutos() {
     criarModalDetalhes();
@@ -228,7 +251,7 @@ function carregarProdutos() {
 
         card.innerHTML = `
             <div class="imagem-container" data-index="0" data-imagens='${JSON.stringify(produto.imagens)}'>
-                <img src="${produto.imagens[0]}" alt="${produto.nome}" class="produto-img" loading="lazy">
+                <img src="${produto.imagens[0]}" alt="${produto.nome}" class="produto-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&auto=format&fit=crop&q=60'">
                 ${botoesTroca}
             </div>
             <div class="card-conteudo">
@@ -241,11 +264,13 @@ function carregarProdutos() {
             </div>
         `;
 
-        // Clicar no card inteiro abre a tela de detalhes estilo Mercado Livre
+        // Clicar no card abre o modal de detalhes
         card.onclick = () => abrirDetalhes(index);
 
         grid.appendChild(card);
     });
+
+    configurarPesquisa();
 }
 
 // FUNÇÃO DAS SETINHAS NO CARD DA VITRINE
