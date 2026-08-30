@@ -121,6 +121,7 @@ const produtos = [
 ];
 
 // FUNÇÃO PARA CRIAR A TELA DE DETALHES (ESTILO MERCADO LIVRE)
+// FUNÇÃO PARA CRIAR A TELA DE DETALHES (ESTILO MERCADO LIVRE - COM X BEM VISÍVEL)
 function criarModalDetalhes() {
     if (document.getElementById('modalDetalhes')) return;
     const modal = document.createElement('div');
@@ -129,7 +130,8 @@ function criarModalDetalhes() {
     
     modal.innerHTML = `
         <div style="background: #1a1a1a; color: #fff; width: 100%; max-width: 500px; border-radius: 12px; padding: 25px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5); font-family: 'Montserrat', sans-serif; max-height: 90vh; overflow-y: auto;">
-            <button onclick="fecharModal()" style="position: absolute; top: 15px; right: 15px; background: #333; color: #fff; border: none; font-size: 18px; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
+            
+            <button onclick="fecharModal()" style="position: absolute; top: 12px; right: 12px; background: #e74c3c; color: #fff; border: none; font-size: 22px; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); z-index: 10; font-weight: bold;">✕</button>
             
             <div style="text-align: center; margin-bottom: 15px; position: relative;">
                 <img id="modalImg" src="" style="width: 100%; max-height: 320px; object-fit: contain; border-radius: 8px; background: #111;" onerror="this.src='https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&auto=format&fit=crop&q=60'">
