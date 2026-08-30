@@ -326,3 +326,48 @@ footer {
         height: 200px;
     }
 }
+/* ESTILO DAS SETINHAS DE TROcar FOTO NA VITRINE */
+.imagem-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-slide {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: background 0.2s, transform 0.2s;
+    z-index: 2;
+}
+
+.btn-slide:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.btn-prev {
+    left: 10px;
+}
+
+.btn-next {
+    right: 10px;
+}
+
+/* EFEITO SUAVE AO TROCAR A IMAGEM */
+.produto-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: opacity 0.2s ease-in-out;
+}
