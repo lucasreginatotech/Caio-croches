@@ -56,15 +56,7 @@ const produtos = [
         ],
         whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Letras Vermelhas."
     },
-    {
-        nome: "Boné Quiksilver Preto e Branco",
-        categoria: "quiksilver",
-        preco: "R$ 300,00",
-        imagens: [
-            "imagens/quiksilver/quiksilver-preto-e-branco-e-lado.jpg"
-        ],
-        whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Preto e Branco."
-    },
+    
     {
         nome: "Boné Quiksilver Roxo e Verde",
         categoria: "quiksilver",
