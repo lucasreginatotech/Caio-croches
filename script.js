@@ -17,7 +17,7 @@ const produtos = [
         categoria: "quiksilver",
         preco: "R$ 300,00",
         imagens: [
-            "imagens/quiksilver/quiksilverazulclaroinho.jpg",
+            "imagens/quiksilver/quiksilverazulclarinho.jpg",
             "imagens/quiksilver/quiksilverazulclaroinhofrente.jpg",
             "imagens/quiksilver/quiksilverazulclaroinhodentro.jpg"
         ],
@@ -100,7 +100,6 @@ const produtos = [
         preco: "R$ 300,00",
         imagens: [
             "imagens/quiksilver/quiksilverbranco-comazul.jpg",
-            "imagens/quiksilver/quiksilverbranco-comazul-lado.jpg",
             "imagens/quiksilver/quiksilverbranco-comazul-atras.jpg"
         ],
         whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Branco com Azul."
@@ -135,29 +134,101 @@ const produtos = [
     }
 ];
 
+// FUNÇÃO PARA CRIAR A TELA DE DETALHES (ESTILO MERCADO LIVRE)
+function criarModalDetalhes() {
+    if (document.getElementById('modalDetalhes')) return;
+    const modal = document.createElement('div');
+    modal.id = 'modalDetalhes';
+    modal.style.cssText = 'display:none; position:fixed; z-index:9999; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; padding: 20px;';
+    
+    modal.innerHTML = `
+        <div style="background: #1a1a1a; color: #fff; width: 100%; max-width: 500px; border-radius: 12px; padding: 25px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5); font-family: 'Montserrat', sans-serif; max-height: 90vh; overflow-y: auto;">
+            <button onclick="fecharModal()" style="position: absolute; top: 15px; right: 15px; background: #333; color: #fff; border: none; font-size: 18px; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">✕</button>
+            
+            <div style="text-align: center; margin-bottom: 15px; position: relative;">
+                <img id="modalImg" src="" style="width: 100%; max-height: 320px; object-fit: contain; border-radius: 8px; background: #111;">
+                <div id="modalBotoesTroca" style="display:none;">
+                    <button onclick="mudarFotoModal(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.6); color: #fff; border: none; padding: 10px; cursor: pointer; border-radius: 50%;">❮</button>
+                    <button onclick="mudarFotoModal(1)" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.6); color: #fff; border: none; padding: 10px; cursor: pointer; border-radius: 50%;">❯</button>
+                </div>
+            </div>
+
+            <h2 id="modalTitulo" style="font-size: 20px; margin-bottom: 10px; font-weight: 700;"></h2>
+            <p style="color: #aaa; font-size: 14px; margin-bottom: 15px;">Crochê artesanal de alta qualidade, feito sob encomenda.</p>
+            
+            <div style="font-size: 24px; font-weight: 700; color: #25d366; margin-bottom: 20px;" id="modalPreco"></div>
+
+            <a id="modalBtnZap" href="" target="_blank" style="display: block; width: 100%; background: #25d366; color: #fff; text-align: center; padding: 14px; border-radius: 8px; font-weight: bold; text-decoration: none; font-size: 16px;">
+                Pedir no WhatsApp ⚡
+            </a>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+let produtoAtualModal = null;
+let fotoIndexModal = 0;
+
+function abrirDetalhes(index) {
+    produtoAtualModal = produtos[index];
+    fotoIndexModal = 0;
+    atualizarConteudoModal();
+    document.getElementById('modalDetalhes').style.display = 'flex';
+}
+
+function fecharModal() {
+    document.getElementById('modalDetalhes').style.display = 'none';
+}
+
+function mudarFotoModal(direcao) {
+    if (!produtoAtualModal || !produtoAtualModal.imagens) return;
+    fotoIndexModal += direcao;
+    if (fotoIndexModal >= produtoAtualModal.imagens.length) fotoIndexModal = 0;
+    if (fotoIndexModal < 0) fotoIndexModal = produtoAtualModal.imagens.length - 1;
+    document.getElementById('modalImg').src = produtoAtualModal.imagens[fotoIndexModal];
+}
+
+function atualizarConteudoModal() {
+    if (!produtoAtualModal) return;
+    document.getElementById('modalImg').src = produtoAtualModal.imagens[0];
+    document.getElementById('modalTitulo').innerText = produtoAtualModal.nome;
+    document.getElementById('modalPreco').innerText = produtoAtualModal.preco;
+    
+    const btnZap = document.getElementById('modalBtnZap');
+    btnZap.href = `https://wa.me/5511948975863?text=${encodeURIComponent(produtoAtualModal.whatsapp)}`;
+
+    const divTroca = document.getElementById('modalBotoesTroca');
+    if (produtoAtualModal.imagens.length > 1) {
+        divTroca.style.display = 'block';
+    } else {
+        divTroca.style.display = 'none';
+    }
+}
+
 // FUNÇÃO PARA GERAR OS CARDS NA TELA
 function carregarProdutos() {
+    criarModalDetalhes();
     const grid = document.getElementById('gridProdutos');
     if (!grid) return;
     grid.innerHTML = "";
 
-    produtos.forEach((produto) => {
+    produtos.forEach((produto, index) => {
         const card = document.createElement('div');
         card.classList.add('bone-card');
         card.setAttribute('data-categoria', produto.categoria);
+        card.style.cursor = "pointer";
 
         let botoesTroca = '';
         if (produto.imagens && produto.imagens.length > 1) {
             botoesTroca = `
-                <button class="btn-slide btn-prev" onclick="mudarFoto(this, -1)">❮</button>
-                <button class="btn-slide btn-next" onclick="mudarFoto(this, 1)">❯</button>
+                <button class="btn-slide btn-prev" onclick="mudarFotoCard(event, this, -1)">❮</button>
+                <button class="btn-slide btn-next" onclick="mudarFotoCard(event, this, 1)">❯</button>
             `;
         }
 
         card.innerHTML = `
             <div class="imagem-container" data-index="0" data-imagens='${JSON.stringify(produto.imagens)}'>
                 <img src="${produto.imagens[0]}" alt="${produto.nome}" class="produto-img" loading="lazy">
-                <span class="tag-lancamento">Exclusivo</span>
                 ${botoesTroca}
             </div>
             <div class="card-conteudo">
@@ -166,19 +237,20 @@ function carregarProdutos() {
                 <div class="preco-container">
                     <span class="preco">${produto.preco}</span>
                 </div>
-                <a href="https://wa.me/5511948975863?text=${encodeURIComponent(produto.whatsapp)}" 
-                   target="_blank" 
-                   class="btn-whatsapp">
-                    Pedir no WhatsApp ⚡
-                </a>
+                <span class="btn-whatsapp" style="text-align:center; display:block;">Ver Detalhes 🔍</span>
             </div>
         `;
+
+        // Clicar no card inteiro abre a tela de detalhes estilo Mercado Livre
+        card.onclick = () => abrirDetalhes(index);
+
         grid.appendChild(card);
     });
 }
 
-// FUNÇÃO DAS SETINHAS DE TROCAR FOTO
-function mudarFoto(botao, direcao) {
+// FUNÇÃO DAS SETINHAS NO CARD DA VITRINE
+function mudarFotoCard(event, botao, direcao) {
+    event.stopPropagation(); // Evita abrir o modal ao clicar na setinha
     const container = botao.closest('.imagem-container');
     const img = container.querySelector('.produto-img');
     const imagens = JSON.parse(container.getAttribute('data-imagens'));
