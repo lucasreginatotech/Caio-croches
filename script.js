@@ -5,12 +5,11 @@ const produtos = [
         categoria: "quiksilver",
         preco: "R$ 300,00",
         imagens: [
-            "imagens/quiksilver/quiksilverazulclaro.jpg",
             "imagens/quiksilver/quiksilver-azul-frente.jpg",
             "imagens/quiksilver/quiksilver-azul-lado.jpg",
             "imagens/quiksilver/quiksilver-azul-emcima.jpg"
         ],
-        whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Azul Claro."
+        whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Azul ."
     },
     {
         nome: "Boné Quiksilver Azul Clarinho",
@@ -18,8 +17,8 @@ const produtos = [
         preco: "R$ 300,00",
         imagens: [
             "imagens/quiksilver/quiksilverazulclarinho.jpg",
-            "imagens/quiksilver/quiksilverazulclaroinhofrente.jpg",
-            "imagens/quiksilver/quiksilverazulclaroinhodentro.jpg"
+            "imagens/quiksilver/quiksilverazulclarinhofrente.jpg",
+            "imagens/quiksilver/quiksilverazulclarinhodentro.jpg"
         ],
         whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Azul Clarinho."
     },
@@ -28,7 +27,9 @@ const produtos = [
         categoria: "quiksilver",
         preco: "R$ 300,00",
         imagens: [
-            "imagens/quiksilver/quiksilver-branco-e-preto-logo.jpg"
+            "imagens/quiksilver/quiksilver-branco-e-preto-logo.jpg",
+            "imagens/quiksilver/quiksilver-preto-e-branco-lado.jpg",
+            "imagens/quiksilver/quiksilver-lado-preto-ebranco.jpg"
         ],
         whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Branco e Preto."
     },
@@ -43,15 +44,7 @@ const produtos = [
         ],
         whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Cinza."
     },
-    {
-        nome: "Boné Quiksilver Lado Preto e Branco",
-        categoria: "quiksilver",
-        preco: "R$ 300,00",
-        imagens: [
-            "imagens/quiksilver/quiksilver-lado-preto-ebranco.jpg"
-        ],
-        whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Lado Preto e Branco."
-    },
+    
     {
         nome: "Boné Quiksilver Letras Vermelhas",
         categoria: "quiksilver",
@@ -99,8 +92,9 @@ const produtos = [
         categoria: "quiksilver",
         preco: "R$ 300,00",
         imagens: [
-            "imagens/quiksilver/quiksilverbranco-comazul.jpg",
-            "imagens/quiksilver/quiksilverbranco-comazul-atras.jpg"
+            "imagens/quiksilver/quiksilverbrancocomazul.jpg",
+            "imagens/quiksilver/quiksilverbrancocomazulatras.jpg",
+            "imagens/quiksilver/quiksilverbrancocomazullado.jpg"
         ],
         whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Branco com Azul."
     },
@@ -118,8 +112,8 @@ const produtos = [
         categoria: "quiksilver",
         preco: "R$ 300,00",
         imagens: [
-            "imagens/quiksilver/quiksilvermetade-metade.jpg",
-            "imagens/quiksilver/quiksilvermetade-metadelogo.jpg"
+            "imagens/quiksilver/quiksilvermetademetade.jpg",
+            "imagens/quiksilver/quiksilvermetademetadelogo.jpg"
         ],
         whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Metade Metade."
     },
