@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caio Crochê | Streetwear Autoral</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- CABEÇALHO E MENU DE NAVEGAÇÃO -->
+    <header class="header-loja">
+        <div class="container">
+            <div class="nav-topo">
+                <h1 class="logo">CAIO <span>CROCHÊ</span></h1>
+                <nav class="menu-links">
+                    <a href="#vitrine">Catálogo</a>
+                    <a href="#sobre">Sobre Mim</a>
+                    <a href="#famosos">Quem Usa</a>
+                </nav>
+            </div>
+            
+            <p class="sub-logo">A verdadeira essência do streetwear artesanal de quebrada.</p>
+            
+            <!-- BARRA DE PESQUISA INTERNA -->
+            <div class="barra-pesquisa">
+                <input type="text" id="campoPesquisa" placeholder="Pesquisar modelo no site..." onkeyup="filtrarBones()">
+            </div>
+        </div>
+    </header>
+
+    <!-- VITRINE DE PRODUTOS (GENÉRICOS PARA VOCÊ EDITAR) -->
+    <main class="container" id="vitrine">
+        <div class="secao-titulo">
+            <h2>Lançamentos Exclusivos</h2>
+            <p>Escolha seu modelo e encomende direto pelo WhatsApp</p>
+        </div>
+
+        <section class="produtos-grid" id="gridProdutos">
+            
+            <!-- PRODUTO 1 -->
+            <div class="bone-card" data-nome="modelo exclusivo 01 bone croche">
+                <div class="imagem-container">
+                    <img src="imagens/produto1.jpg" alt="Modelo 1">
+                    <span class="tag-lancamento">Lançamento</span>
+                </div>
+                <div class="card-conteudo">
+                    <h3 class="bone-titulo">Modelo Exclusivo 01</h3>
+                    <p class="bone-descricao">Peça autoral feita fio a fio com acabamento premium e pegada pesada de quebrada.</p>
+                    <div class="preco-container">
+                        <span class="preco">R$ 129,90</span>
+                    </div>
+                    <a href="https://wa.me/5511999999999?text=Salve%20Caio!%20Gostaria%20de%20encomendar%20o%20Modelo%20Exclusivo%2001." 
+                       target="_blank" 
+                       class="btn-whatsapp">
+                        Pedir no WhatsApp ⚡
+                    </a>
+                </div>
+            </div>
+
+            <!-- PRODUTO 2 -->
+            <div class="bone-card" data-nome="modelo exclusivo 02 bone croche">
+                <div class="imagem-container">
+                    <img src="imagens/produto2.jpg" alt="Modelo 2">
+                    <span class="tag-lancamento">Exclusivo</span>
+                </div>
+                <div class="card-conteudo">
+                    <h3 class="bone-titulo">Modelo Exclusivo 02</h3>
+                    <p class="bone-descricao">Design exclusivo do Caio para fortalecer o seu style no corre do dia a dia.</p>
+                    <div class="preco-container">
+                        <span class="preco">R$ 119,90</span>
+                    </div>
+                    <a href="https://wa.me/5511999999999?text=Salve%20Caio!%20Gostaria%20de%20encomendar%20o%20Modelo%20Exclusivo%2002." 
+                       target="_blank" 
+                       class="btn-whatsapp">
+                        Pedir no WhatsApp ⚡
+                    </a>
+                </div>
+            </div>
+
+            <!-- PRODUTO 3 -->
+            <div class="bone-card" data-nome="modelo exclusivo 03 bone croche">
+                <div class="imagem-container">
+                    <img src="imagens/produto3.jpg" alt="Modelo 3">
+                    <span class="tag-lancamento">Limitado</span>
+                </div>
+                <div class="card-conteudo">
+                    <h3 class="bone-titulo">Modelo Exclusivo 03</h3>
+                    <p class="bone-descricao">Trama reforçada, encaixe perfeito e atitude de sobra para quem entende de moda urbana.</p>
+                    <div class="preco-container">
+                        <span class="preco">R$ 139,90</span>
+                    </div>
+                    <a href="https://wa.me/5511999999999?text=Salve%20Caio!%20Gostaria%20de%20encomendar%20o%20Modelo%20Exclusivo%2003." 
+                       target="_blank" 
+                       class="btn-whatsapp">
+                        Pedir no WhatsApp ⚡
+                    </a>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- SEÇÃO SOBRE MIM -->
+    <section class="secao-sobre" id="sobre">
+        <div class="container sobre-box">
+            <div class="sobre-texto">
+                <h2>Sobre o Caio</h2>
+                <p>O crochê deixou de ser tradição antiga e virou arte de rua. Cada peça carrega horas de dedicação, cultura de quebrada e identidade visual própria. Aqui não tem produção em massa: é exclusividade pura para quem veste originalidade.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO FAMOSOS / QUEM USA -->
+    <section class="secao-famosos" id="famosos">
+        <div class="container">
+            <div class="secao-titulo">
+                <h2>Quem Usa a Marca</h2>
+                <p>Artistas, referências e quebrada pesada fechada com o corre</p>
+            </div>
+            <div class="famosos-grid">
+                <!-- Espaço para fotos de famosos usando o boné -->
+                <div class=" famoso-card">
+                    <img src="imagens/famoso1.jpg" alt="Famoso usando o boné">
+                    <p>@NomeDoFamoso</p>
+                </div>
+                <div class="famoso-card">
+                    <img src="imagens/famoso2.jpg" alt="Famoso usando o boné">
+                    <p>@OutroArtista</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>&copy; 2026 Caio Crochê. Todos os direitos reservados. Arte e atitude na quebrada.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
