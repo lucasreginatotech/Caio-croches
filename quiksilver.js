@@ -1,5 +1,5 @@
 // LISTA DE PRODUTOS - QUIKSILVER
-const produtos = [
+const produtosQuiksilver = [
     {
         nome: "Boné Quiksilver Azul Claro",
         categoria: "quiksilver",
