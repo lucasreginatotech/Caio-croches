@@ -367,3 +367,47 @@ footer {
         height: 200px;
     }
 }
+/* ==========================================
+   ESTILO DA BARRA DE FILTRO DE MARCAS
+   ========================================== */
+.marcas-filtro {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 15px 10px;
+    background: #121212;
+    border-bottom: 1px solid #222;
+    white-space: nowrap;
+    scrollbar-width: thin;
+    scrollbar-color: #ffcc00 #222;
+    margin-bottom: 10px;
+}
+
+.marcas-filtro::-webkit-scrollbar {
+    height: 4px;
+}
+
+.marcas-filtro::-webkit-scrollbar-thumb {
+    background: #ffcc00;
+    border-radius: 4px;
+}
+
+.btn-cat {
+    background-color: #1a1a1a;
+    color: #b0b0b0;
+    border: 1px solid #333;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-cat:hover, .btn-cat.ativo {
+    background-color: #ffcc00;
+    color: #000;
+    border-color: #ffcc00;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+}
