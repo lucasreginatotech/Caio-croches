@@ -8,7 +8,9 @@ const produtos = [
     ...produtosGucci,
     ...produtosGrau46,
     ...produtosEcko,
-    ...produtosTonyCountry
+    ...produtosTonyCountry,
+    ...produtosCyclone,
+    ...produtosOakley
 ];
 // FUNÇÃO PARA CRIAR A TELA DE DETALHES (ESTILO MERCADO LIVRE)
 // FUNÇÃO PARA CRIAR A TELA DE DETALHES (ESTILO MERCADO LIVRE - COM X BEM VISÍVEL)
