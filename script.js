@@ -1,6 +1,5 @@
 const produtos = [
     ...produtosQuiksilver,
-    ...produtosLouisVuitton,
     ...produtosTimes,
     ...produtosNike,
     ...produtosLacoste,
