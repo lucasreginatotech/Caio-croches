@@ -17,8 +17,8 @@ const produtosLV = [
         categoria: "lv",
         preco: "R$ 300,00",
         imagens: [
-            "imagens/lv/lvallblack1.jpg",
-            "imagens/lv/lvallblack2.jpg"
+            "imagens/lv/lvallblack1.jpg:1",
+            "imagens/lv/lvallblack2.jpg:1"
         ],
         whatsapp: "Salve Caio! Quero encomendar o Boné Louis Vuitton All Black."
     },
