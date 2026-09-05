@@ -156,5 +156,88 @@ const produtosQuiksilver = [
             "imagens/quiksilver/quiksilverbr1.jpg"
         ],
         whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Azul."
+    },
+    {
+        nome: "Boné Quiksilver Preto",
+        categoria: "quiksilver",
+        preco: "R$ 300,00",
+        imagens: [
+            "imagens/quiksilver/quiksilverpretob1.jpg",
+            "imagens/quiksilver/quiksilverpretob2.jpg",
+            "imagens/quiksilver/quiksilverpretob3.jpg"
+        ],
+        whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Preto."
+    },
+    {
+        nome: "Boné Quiksilver Roxo",
+        categoria: "quiksilver",
+        preco: "R$ 300,00",
+        imagens: [
+            "imagens/quiksilver/quikroxo1.jpg",
+            "imagens/quiksilver/quikroxo2.jpg"
+        ],
+        whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Roxo."
+    },
+    {
+        nome: "Boné Quiksilver Azul Estampado",
+        categoria: "quiksilver",
+        preco: "R$ 300,00",
+        imagens: [
+            "imagens/quiksilver/quiks1.jpg",
+            "imagens/quiksilver/quiks2.jpg",
+            "imagens/quiksilver/qukisb.jpg"
+        ],
+        whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Azul Estampado."
+    },
+    {
+        nome: "Boné Quiksilver Modelo B",
+        categoria: "quiksilver",
+        preco: "R$ 300,00",
+        imagens: [
+            "imagens/quiksilver/quikb1.jpg",
+            "imagens/quiksilver/quikb2.jpg",
+            "imagens/quiksilver/quikb3.jpg"
+        ],
+        whatsapp: "Salve Caio! Quero encomendar este Boné Quiksilver."
+    },
+    {
+        nome: "Boné Quiksilver LA",
+        categoria: "quiksilver",
+        preco: "R$ 300,00",
+        imagens: [
+            "imagens/quiksilver/quikla.jpg",
+            "imagens/quiksilver/quikla1.jpg",
+            "imagens/quiksilver/quikla2.jpg"
+        ],
+        whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver LA."
+    },
+    {
+        nome: "Boné Quiksilver Coleção A",
+        categoria: "quiksilver",
+        preco: "R$ 300,00",
+        imagens: [
+            "imagens/quiksilver/quika1.jpg",
+            "imagens/quiksilver/quikaa1.jpg",
+            "imagens/quiksilver/quika2.jpg"
+        ],
+        whatsapp: "Salve Caio! Quero encomendar este Boné Quiksilver."
+    },
+    {
+        nome: "Boné Quiksilver LB",
+        categoria: "quiksilver",
+        preco: "R$ 300,00",
+        imagens: [
+            "imagens/quiksilver/quiklb1.jpg"
+        ],
+        whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver LB."
+    },
+    {
+        nome: "Boné Quiksilver V",
+        categoria: "quiksilver",
+        preco: "R$ 300,00",
+        imagens: [
+            "imagens/quiksilver/quikv1.jpg"
+        ],
+        whatsapp: "Salve Caio! Quero encomendar este Boné Quiksilver."
     }
 ];
