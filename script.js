@@ -12,7 +12,7 @@ const produtos = [
     ...produtosCyclone,
     ...produtosOakley
 ];
-// FUNÇÃO PARA CRIAR A TELA DE DETALHES (ESTILO MERCADO LIVRE)
+
 // FUNÇÃO PARA CRIAR A TELA DE DETALHES (ESTILO MERCADO LIVRE - COM X BEM VISÍVEL)
 function criarModalDetalhes() {
     if (document.getElementById('modalDetalhes')) return;
@@ -50,7 +50,6 @@ let produtoAtualModal = null;
 let fotoIndexModal = 0;
 
 function abrirDetalhes(indexOriginal) {
-    // Acha o produto correto mesmo se estiver filtrado na pesquisa
     const produto = produtos[indexOriginal];
     if (!produto) return;
     produtoAtualModal = produto;
@@ -144,18 +143,17 @@ function carregarProdutos() {
             </div>
         `;
 
-        // Clicar no card abre o modal de detalhes
         card.onclick = () => abrirDetalhes(index);
-
         grid.appendChild(card);
     });
 
     configurarPesquisa();
+    montarMenuLateral(); // <-- CONSTRÓI AS CATEGORIAS E QUANTIDADES NA ABA LATERAL
 }
 
 // FUNÇÃO DAS SETINHAS NO CARD DA VITRINE
 function mudarFotoCard(event, botao, direcao) {
-    event.stopPropagation(); // Evita abrir o modal ao clicar na setinha
+    event.stopPropagation();
     const container = botao.closest('.imagem-container');
     const img = container.querySelector('.produto-img');
     const imagens = JSON.parse(container.getAttribute('data-imagens'));
@@ -172,12 +170,6 @@ function mudarFotoCard(event, botao, direcao) {
 // FILTRAR POR CATEGORIA (MARCA)
 function filtrarCategoria(categoriaSelecionada) {
     const cards = document.querySelectorAll('.bone-card');
-    const botoes = document.querySelectorAll('.btn-cat');
-
-    botoes.forEach(btn => btn.classList.remove('ativo'));
-    if (event && event.target) {
-        event.target.classList.add('ativo');
-    }
 
     cards.forEach(card => {
         const categoriaCard = card.getAttribute('data-categoria');
@@ -189,4 +181,67 @@ function filtrarCategoria(categoriaSelecionada) {
     });
 }
 
+// ABRIR E FECHAR A GAVETA LATERAL
+function toggleMenuLateral() {
+    const aba = document.getElementById('abaLateral');
+    const overlay = document.getElementById('overlayMenu');
+    aba.classList.toggle('ativa');
+    overlay.classList.toggle('ativo');
+}
+
+// CRIAR OS BOTÕES NA ABA LATERAL CONTANDO OS PRODUTOS AUTOMATICAMENTE
+function montarMenuLateral() {
+    const container = document.getElementById('listaFiltrosLateral');
+    if (!container) return;
+
+    const categorias = [
+        { id: 'todos', nome: 'Todos os Modelos' },
+        { id: 'quiksilver', nome: 'Quiksilver' },
+        { id: 'lv', nome: 'Louis Vuitton' },
+        { id: 'times', nome: 'Times' },
+        { id: 'nike', nome: 'Nike' },
+        { id: 'lacoste', nome: 'Lacoste' },
+        { id: 'oakley', nome: 'Oakley' },
+        { id: 'redbull', nome: 'Red Bull' },
+        { id: 'gucci', nome: 'Gucci' },
+        { id: 'grau46', nome: 'Grau 46' },
+        { id: 'ecko', nome: 'Ecko' },
+        { id: 'tonycountry', nome: 'Tony Country' }
+    ];
+
+    container.innerHTML = "";
+
+    categorias.forEach(cat => {
+        let quantidade = 0;
+        if (cat.id === 'todos') {
+            quantidade = produtos.length;
+        } else {
+            quantidade = produtos.filter(p => p.categoria === cat.id).length;
+        }
+
+        const btn = document.createElement('div');
+        btn.className = `item-filtro-lateral ${cat.id === 'todos' ? 'ativo' : ''}`;
+        btn.innerHTML = `
+            <span>${cat.nome}</span>
+            <span class="badge-qtd">${quantidade}</span>
+        `;
+        
+        btn.onclick = () => {
+            filtrarCategoria(cat.id);
+            document.querySelectorAll('.item-filtro-lateral').forEach(b => b.classList.remove('ativo'));
+            btn.classList.add('ativo');
+            toggleMenuLateral();
+        };
+
+        container.appendChild(btn);
+    });
+}
+
 window.onload = carregarProdutos;
+// ROLAR OS FAMOSOS COM AS SETINHAS NO TOPO
+function rolarFamosos(direcao) {
+    const container = document.getElementById('famososScroll');
+    if (container) {
+        container.scrollBy({ left: direcao * 180, behavior: 'smooth' });
+    }
+}
