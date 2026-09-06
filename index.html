@@ -12,9 +12,7 @@
 </head>
 <body>
     <!-- BOTÃO PARA ABRIR A ABA LATERAL -->
-<button class="btn-abrir-menu" onclick="toggleMenuLateral()">
-    <i class="fa-solid fa-bars"></i> Modelos de Bonés
-</button>
+
 
 <!-- O FUNDO ESCURO (OVERLAY) QUANDO A ABA ABRE -->
 <div id="overlayMenu" class="overlay-menu" onclick="toggleMenuLateral()"></div>
@@ -55,38 +53,98 @@
         </div>
     </header>
 
-   <!-- ARTISTAS DE PESO NO TOPO (COM SCROLL E SETINHAS) -->
-<div class="container">
-    <div class="secao-titulo" style="margin-top: 15px; margin-bottom: 8px;">
-        <h2>Artistas de Peso</h2>
-    </div>
-    
-    <div class="famosos-container-wrapper">
-        <button class="btn-slide-famosos btn-prev-famosos" onclick="rolarFamosos(-1)">❮</button>
-        
-        <div class="famosos-topo-scroll" id="famososScroll">
-            <div class="famoso-card-topo">
-                <img src="imagens/famosos/buzeira.jpg" alt="Buzeira">
-                <p>Buzeira</p>
-            </div>
-            <div class="famoso-card-topo">
-                <img src="imagens/famosos/hariel.jpg" alt="MC Hariel">
-                <p>Hariel</p>
-            </div>
-            <div class="famoso-card-topo">
-                <img src="imagens/famosos/mckauan.jpg" alt="MC Kauan">
-                <p>MC Kauan</p>
-            </div>
-            <div class="famoso-card-topo">
-                <img src="imagens/famosos/salvador.jpg" alt="Salvador da Rima">
-                <p>Salvador</p>
-            </div>
-            <!-- Quando adicionar mais famosos, basta colar novos blocos <div class="famoso-card-topo"> aqui em diante! -->
+   <!-- ARTISTAS DE PESO NO TOPO (COM MODAL E SETINHAS DE NAVEGAÇÃO) -->
+    <div class="container">
+        <div class="secao-titulo" style="margin-top: 15px; margin-bottom: 8px;">
+            <h2>Artistas de Peso</h2>
         </div>
+        
+        <div class="famosos-container-wrapper">
+            <button class="btn-slide-famosos btn-prev-famosos" onclick="rolarFamosos(-1)">❮</button>
+            
+            <div class="famosos-topo-scroll" id="famososScroll">
+                <!-- Buzeira -->
+                <div class="famoso-card-topo" onclick="abrirModalFamoso(0)">
+                    <img src="imagens/famosos/buzeira.jpg" alt="Buzeira">
+                    <p>Buzeira</p>
+                </div>
+                <div class="famoso-card-topo" onclick="abrirModalFamoso(1)">
+                    <img src="imagens/famosos/buzeira2.jpg" alt="Buzeira">
+                    <p>Buzeira 2</p>
+                </div>
+                <div class="famoso-card-topo" onclick="abrirModalFamoso(2)">
+                    <img src="imagens/famosos/buzeira3.jpg" alt="Buzeira">
+                    <p>Buzeira 3</p>
+                </div>
 
-        <button class="btn-slide-famosos btn-next-famosos" onclick="rolarFamosos(1)">❯</button>
+                <!-- MC Hariel -->
+                <div class="famoso-card-topo" onclick="abrirModalFamoso(3)">
+                    <img src="imagens/famosos/hariel.jpg" alt="MC Hariel">
+                    <p>MC Hariel</p>
+                </div>
+                <div class="famoso-card-topo" onclick="abrirModalFamoso(4)">
+                    <img src="imagens/famosos/hariel1.jpg" alt="MC Hariel">
+                    <p>MC Hariel</p>
+                </div>
+                <div class="famoso-card-topo" onclick="abrirModalFamoso(5)">
+                    <img src="imagens/famosos/hariel2.jpg" alt="MC Hariel">
+                    <p>MC Hariel</p>
+                </div>
+                <div class="famoso-card-topo" onclick="abrirModalFamoso(6)">
+                    <img src="imagens/famosos/hariel3.jpg" alt="MC Hariel">
+                    <p>MC Hariel</p>
+                </div>
+                <div class="famoso-card-topo" onclick="abrirModalFamoso(7)">
+                    <img src="imagens/famosos/hariel4.jpg" alt="MC Hariel">
+                    <p>MC Hariel</p>
+                </div>
+
+                <!-- Salvador da Rima -->
+                <div class="famoso-card-topo" onclick="abrirModalFamoso(8)">
+                    <img src="imagens/famosos/salvador.jpg" alt="Salvador da Rima">
+                    <p>Salvador</p>
+                </div>
+                <div class="famoso-card-topo" onclick="abrirModalFamoso(9)">
+                    <img src="imagens/famosos/salvador1.jpg" alt="Salvador da Rima">
+                    <p>Salvador</p>
+                </div>
+                <div class="famoso-card-topo" onclick="abrirModalFamoso(10)">
+                    <img src="imagens/famosos/salvador2.jpg" alt="Salvador da Rima">
+                    <p>Salvador</p>
+                </div>
+                <div class="famoso-card-topo" onclick="abrirModalFamoso(11)">
+                    <img src="imagens/famosos/salvador3.jpg" alt="Salvador da Rima">
+                    <p>Salvador</p>
+                </div>
+
+                <!-- Bruno Tatuapé -->
+                <div class="famoso-card-topo" onclick="abrirModalFamoso(12)">
+                    <img src="imagens/famosos/Brunotatuape1.jpg" alt="Bruno Tatuapé">
+                    <p>Bruno Tatuapé</p>
+                </div>
+                <div class="famoso-card-topo" onclick="abrirModalFamoso(13)">
+                    <img src="imagens/famosos/brunotatuape2.jpg" alt="Bruno Tatuapé">
+                    <p>Bruno Tatuapé</p>
+                </div>
+
+                <!-- Demais Artistas -->
+                <div class="famoso-card-topo" onclick="abrirModalFamoso(14)">
+                    <img src="imagens/famosos/mckauan.jpg" alt="MC Kauan">
+                    <p>MC Kauan</p>
+                </div>
+                <div class="famoso-card-topo" onclick="abrirModalFamoso(15)">
+                    <img src="imagens/famosos/crysdias.jpg" alt="Crys Dias">
+                    <p>Crys Dias</p>
+                </div>
+                <div class="famoso-card-topo" onclick="abrirModalFamoso(16)">
+                    <img src="imagens/famosos/mccebezinho.jpg" alt="MC Cebebinho">
+                    <p>MC Cebebinho</p>
+                </div>
+            </div>
+
+            <button class="btn-slide-famosos btn-next-famosos" onclick="rolarFamosos(1)">❯</button>
+        </div>
     </div>
-</div>
 
    
 

@@ -148,7 +148,7 @@ function carregarProdutos() {
     });
 
     configurarPesquisa();
-    montarMenuLateral(); // <-- CONSTRÓI AS CATEGORIAS E QUANTIDADES NA ABA LATERAL
+    montarMenuLateral();
 }
 
 // FUNÇÃO DAS SETINHAS NO CARD DA VITRINE
@@ -206,7 +206,8 @@ function montarMenuLateral() {
         { id: 'gucci', nome: 'Gucci' },
         { id: 'grau46', nome: 'Grau 46' },
         { id: 'ecko', nome: 'Ecko' },
-        { id: 'tonycountry', nome: 'Tony Country' }
+        { id: 'tonycountry', nome: 'Tony Country' },
+        { id: 'cyclone', nome: 'Cyclone' } // <-- ADICIONADO AQUI
     ];
 
     container.innerHTML = "";
@@ -236,12 +237,87 @@ function montarMenuLateral() {
         container.appendChild(btn);
     });
 }
-
 window.onload = carregarProdutos;
+
 // ROLAR OS FAMOSOS COM AS SETINHAS NO TOPO
 function rolarFamosos(direcao) {
     const container = document.getElementById('famososScroll');
     if (container) {
         container.scrollBy({ left: direcao * 180, behavior: 'smooth' });
     }
+}
+
+// ==========================================
+// MODAL DOS FAMOSOS COM SETINHAS DE NAVEGAÇÃO
+// ==========================================
+const listaFamosos = [
+    { img: 'imagens/famosos/buzeira.jpg', nome: 'Buzeira' },
+    { img: 'imagens/famosos/buzeira2.jpg', nome: 'Buzeira' },
+    { img: 'imagens/famosos/buzeira3.jpg', nome: 'Buzeira' },
+    { img: 'imagens/famosos/hariel.jpg', nome: 'MC Hariel' },
+    { img: 'imagens/famosos/hariel1.jpg', nome: 'MC Hariel' },
+    { img: 'imagens/famosos/hariel2.jpg', nome: 'MC Hariel' },
+    { img: 'imagens/famosos/hariel3.jpg', nome: 'MC Hariel' },
+    { img: 'imagens/famosos/hariel4.jpg', nome: 'MC Hariel' },
+    { img: 'imagens/famosos/salvador.jpg', nome: 'Salvador da Rima' },
+    { img: 'imagens/famosos/salvador1.jpg', nome: 'Salvador da Rima' },
+    { img: 'imagens/famosos/salvador2.jpg', nome: 'Salvador da Rima' },
+    { img: 'imagens/famosos/salvador3.jpg', nome: 'Salvador da Rima' },
+    { img: 'imagens/famosos/Brunotatuape1.jpg', nome: 'Bruno Tatuapé' },
+    { img: 'imagens/famosos/brunotatuape2.jpg', nome: 'Bruno Tatuapé' },
+    { img: 'imagens/famosos/mckauan.jpg', nome: 'MC Kauan' },
+    { img: 'imagens/famosos/crysdias.jpg', nome: 'Crys Dias' },
+    { img: 'imagens/famosos/mccebezinho.jpg', nome: 'MC Cebebinho' }
+];
+
+let indexFamosoModalAtual = 0;
+
+function criarModalFamosoContainer() {
+    if (document.getElementById('modalFamoso')) return;
+    const modal = document.createElement('div');
+    modal.id = 'modalFamoso';
+    modal.style.cssText = 'display:none; position:fixed; z-index:10000; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; padding: 20px;';
+    
+    modal.innerHTML = `
+        <div style="background: #141414; color: #fff; width: 100%; max-width: 420px; border-radius: 12px; padding: 20px; position: relative; text-align: center; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
+            <button onclick="fecharModalFamoso()" style="position: absolute; top: 12px; right: 12px; background: #e74c3c; color: #fff; border: none; font-size: 20px; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.5); z-index: 20;">✕</button>
+            
+            <div style="position: relative; margin-bottom: 15px;">
+                <img id="modalFamosoImg" src="" style="width: 100%; max-height: 400px; object-fit: contain; border-radius: 8px; background: #000; border: 1px solid #00ff66;">
+                
+                <button onclick="mudarFotoFamosoModal(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.7); color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; z-index: 10; transition: 0.2s;">❮</button>
+                <button onclick="mudarFotoFamosoModal(1)" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.7); color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; z-index: 10; transition: 0.2s;">❯</button>
+            </div>
+            
+            <h3 id="modalFamosoTitulo" style="font-size: 1.2rem; color: #00ff66; text-transform: uppercase; font-weight: 800;"></h3>
+            <p style="font-size: 0.75rem; color: #aaa; margin-top: 5px;">Usando Caio Crochê na quebrada 🧢</p>
+        </div>
+    `;
+    document.body.appendChild(modal);
+}
+
+function abrirModalFamoso(index) {
+    criarModalFamosoContainer();
+    indexFamosoModalAtual = index;
+    atualizarConteudoModalFamoso();
+    document.getElementById('modalFamoso').style.display = 'flex';
+}
+
+function mudarFotoFamosoModal(direcao) {
+    indexFamosoModalAtual += direcao;
+    if (indexFamosoModalAtual >= listaFamosos.length) indexFamosoModalAtual = 0;
+    if (indexFamosoModalAtual < 0) indexFamosoModalAtual = listaFamosos.length - 1;
+    atualizarConteudoModalFamoso();
+}
+
+function atualizarConteudoModalFamoso() {
+    const item = listaFamosos[indexFamosoModalAtual];
+    if (!item) return;
+    document.getElementById('modalFamosoImg').src = item.img;
+    document.getElementById('modalFamosoTitulo').innerText = item.nome;
+}
+
+function fecharModalFamoso() {
+    const modal = document.getElementById('modalFamoso');
+    if (modal) modal.style.display = 'none';
 }
