@@ -5,7 +5,7 @@ const produtosTonyCountry = [
     {
         nome: "Boné Tony Country Bola Mais",
         categoria: "tonycountry",
-        preco: "R$ 300,00",
+        preco: "R$ 260,00",
         imagens: [
             "imagens/tony country/bolamais1.jpg",
             "imagens/tony country/bolamais2.jpg"
@@ -15,7 +15,7 @@ const produtosTonyCountry = [
     {
         nome: "Boné Tony Country Irmãos",
         categoria: "tonycountry",
-        preco: "R$ 300,00",
+        preco: "R$ 350,00",
         imagens: [
             "imagens/tony country/irmãos1.jpg",
             "imagens/tony country/irmãos2.jpg"
@@ -25,7 +25,7 @@ const produtosTonyCountry = [
     {
         nome: "Boné Tony Country Palhaço",
         categoria: "tonycountry",
-        preco: "R$ 300,00",
+        preco: "R$ 350,00",
         imagens: [
             "imagens/tony country/palhaço1.jpg",
             "imagens/tony country/palhaço2.jpg",
@@ -37,9 +37,9 @@ const produtosTonyCountry = [
         whatsapp: "Salve Caio! Quero encomendar o Boné Tony Country Palhaço."
     },
     {
-        nome: "Boné Tony Country Palhaço B",
+        nome: "Boné Tony Country Palhaço Branco",
         categoria: "tonycountry",
-        preco: "R$ 300,00",
+        preco: "R$ 350,00",
         imagens: [
             "imagens/tony country/palhaçob1.jpg",
             "imagens/tony country/palhaçob2.jpg",
@@ -52,18 +52,18 @@ const produtosTonyCountry = [
     {
         nome: "Boné Tony Country Básico",
         categoria: "tonycountry",
-        preco: "R$ 300,00",
+        preco: "R$ 180,00",
         imagens: [
-            "imagens/tony country/tonybasico1.jpg",
             "imagens/tony country/tonybasico2.jpg",
+            "imagens/tony country/tonybasico1.jpg",
             "imagens/tony country/tonybasico3.jpg"
         ],
         whatsapp: "Salve Caio! Quero encomendar o Boné Tony Country Básico."
     },
     {
-        nome: "Boné Tony Country Estilo",
+        nome: "Boné Tony Country ",
         categoria: "tonycountry",
-        preco: "R$ 300,00",
+        preco: "R$ 350,00",
         imagens: [
             "imagens/tony country/tonycontry1.jpg",
             "imagens/tony country/tonycontry2.jpg",
@@ -74,7 +74,7 @@ const produtosTonyCountry = [
     {
         nome: "Boné Tony Country Special",
         categoria: "tonycountry",
-        preco: "R$ 300,00",
+        preco: "R$ 350,00",
         imagens: [
             "imagens/tony country/tonycountryb1.jpg",
             "imagens/tony country/tonycountryb2.jpg",
@@ -85,7 +85,7 @@ const produtosTonyCountry = [
     {
         nome: "Boné Tony Country Branco",
         categoria: "tonycountry",
-        preco: "R$ 300,00",
+        preco: "R$ 260,00",
         imagens: [
             "imagens/tony country/tonycountrybranco1.jpg"
         ],
@@ -94,7 +94,7 @@ const produtosTonyCountry = [
     {
         nome: "Boné Tony Country Preto",
         categoria: "tonycountry",
-        preco: "R$ 300,00",
+        preco: "R$ 180,00",
         imagens: [
             "imagens/tony country/tonyp1.jpg"
         ],

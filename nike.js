@@ -1,9 +1,9 @@
 // LISTA DE PRODUTOS - NIKE
 const produtosNike = [
     {
-        nome: "Boné Nike Preto e Branco",
+        nome: "Boné Nike Brasil",
         categoria: "nike",
-        preco: "R$ 300,00",
+        preco: "R$ 280,00",
         imagens: [
             "imagens/nike/nkpretobr1.jpg"
         ],
@@ -12,7 +12,7 @@ const produtosNike = [
     {
         nome: "Boné Nike Preto Clássico",
         categoria: "nike",
-        preco: "R$ 300,00",
+        preco: "R$ 200,00",
         imagens: [
             "imagens/nike/nkb1.jpg",
             "imagens/nike/nkb2.jpg"
@@ -20,9 +20,9 @@ const produtosNike = [
         whatsapp: "Salve Caio! Quero encomendar o Boné Nike Preto Clássico."
     },
     {
-        nome: "Boné Nike Preto Texturizado",
+        nome: "Boné Nike Preto com detalhes em Branco",
         categoria: "nike",
-        preco: "R$ 300,00",
+        preco: "R$ 200,00",
         imagens: [
             "imagens/nike/nkp1.jpg",
             "imagens/nike/nkp2.jpg"

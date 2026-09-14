@@ -1,19 +1,80 @@
-const produtos = [
-    ...produtosQuiksilver,
-    ...produtosLV,
-    ...produtosTimes,
-    ...produtosNike,
-    ...produtosLacoste,
-    ...produtosRedBull,
-    ...produtosGucci,
-    ...produtosGrau46,
-    ...produtosEcko,
-    ...produtosTonyCountry,
-    ...produtosCyclone,
-    ...produtosOakley
-];
+// Variável global de produtos
+let produtos = [];
 
-// FUNÇÃO PARA CRIAR A TELA DE DETALHES (ESTILO MERCADO LIVRE - COM X BEM VISÍVEL)
+// FUNÇÃO PARA GERAR OS CARDS NA TELA (COM SWIPE, EFEITO DE ARRASTAR E BOLINHAS)
+function carregarProdutos() {
+    produtos = [
+        ...(typeof produtosQuiksilver !== 'undefined' ? produtosQuiksilver : []),
+        ...(typeof produtosLV !== 'undefined' ? produtosLV : []),
+        ...(typeof produtosTimes !== 'undefined' ? produtosTimes : []),
+        ...(typeof produtosNike !== 'undefined' ? produtosNike : []),
+        ...(typeof produtosLacoste !== 'undefined' ? produtosLacoste : []),
+        ...(typeof produtosRedBull !== 'undefined' ? produtosRedBull : []),
+        ...(typeof produtosGucci !== 'undefined' ? produtosGucci : []),
+        ...(typeof produtosGrau46 !== 'undefined' ? produtosGrau46 : []),
+        ...(typeof produtosEcko !== 'undefined' ? produtosEcko : []),
+        ...(typeof produtosTonyCountry !== 'undefined' ? produtosTonyCountry : []),
+        ...(typeof produtosCyclone !== 'undefined' ? produtosCyclone : []),
+        ...(typeof produtosOakley !== 'undefined' ? produtosOakley : [])
+    ];
+
+    criarModalDetalhes();
+    const grid = document.getElementById('gridProdutos');
+    if (!grid) return;
+    grid.innerHTML = "";
+
+    produtos.forEach((produto, index) => {
+        const card = document.createElement('div');
+        card.classList.add('bone-card');
+        card.setAttribute('data-categoria', produto.categoria);
+
+        let botoesTroca = '';
+        let dotsHTML = '';
+        
+        if (produto.imagens && produto.imagens.length > 1) {
+            botoesTroca = `
+                <button class="btn-slide btn-prev" onclick="mudarFotoCard(event, this, -1)">❮</button>
+                <button class="btn-slide btn-next" onclick="mudarFotoCard(event, this, 1)">❯</button>
+            `;
+            
+            let dots = '';
+            for (let i = 0; i < produto.imagens.length; i++) {
+                dots += `<span class="dot ${i === 0 ? 'active' : ''}"></span>`;
+            }
+            dotsHTML = `<div class="dots-container">${dots}</div>`;
+        }
+
+        card.innerHTML = `
+            <div class="imagem-container" data-index="0" data-imagens='${JSON.stringify(produto.imagens)}'>
+                <img src="${produto.imagens[0]}" alt="${produto.nome}" class="produto-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&auto=format&fit=crop&q=60'">
+                ${botoesTroca}
+                ${dotsHTML}
+            </div>
+            <div class="card-conteudo">
+                <h3 class="bone-titulo">${produto.nome}</h3>
+                <p class="bone-descricao">Crochê artesanal de alta qualidade.</p>
+                <span class="preco">${produto.preco}</span>
+                <span class="btn-whatsapp">Ver Detalhes 🔍</span>
+            </div>
+        `;
+
+        card.onclick = () => abrirDetalhes(index);
+        grid.appendChild(card);
+        
+        // Ativa o swipe avançado no card
+        const imgContainer = card.querySelector('.imagem-container');
+        adicionarEventosSwipe(imgContainer, (direcao) => {
+            mudarFotoCardSwipe(card.querySelector('.imagem-container'), direcao);
+        });
+    });
+
+    configurarPesquisa();
+    montarMenuLateral();
+}
+
+// ==========================================
+// MODAL DE DETALHES (COM BOLINHAS, SETAS E SWIPE)
+// ==========================================
 function criarModalDetalhes() {
     if (document.getElementById('modalDetalhes')) return;
     const modal = document.createElement('div');
@@ -25,12 +86,15 @@ function criarModalDetalhes() {
             
             <button onclick="fecharModal()" style="position: absolute; top: 12px; right: 12px; background: #e74c3c; color: #fff; border: none; font-size: 22px; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); z-index: 10; font-weight: bold;">✕</button>
             
-            <div style="text-align: center; margin-bottom: 15px; position: relative;">
+            <div id="modalImgContainer" style="text-align: center; margin-bottom: 15px; position: relative; user-select: none;">
                 <img id="modalImg" src="" style="width: 100%; max-height: 320px; object-fit: contain; border-radius: 8px; background: #111;" onerror="this.src='https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&auto=format&fit=crop&q=60'">
+                
                 <div id="modalBotoesTroca" style="display:none;">
-                    <button onclick="mudarFotoModal(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.6); color: #fff; border: none; padding: 10px; cursor: pointer; border-radius: 50%;">❮</button>
-                    <button onclick="mudarFotoModal(1)" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.6); color: #fff; border: none; padding: 10px; cursor: pointer; border-radius: 50%;">❯</button>
+                    <button onclick="mudarFotoModal(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.7); color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; z-index: 10;">❮</button>
+                    <button onclick="mudarFotoModal(1)" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.7); color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; z-index: 10;">❯</button>
                 </div>
+
+                <div id="modalDotsContainer" class="dots-container" style="bottom: 10px;"></div>
             </div>
 
             <h2 id="modalTitulo" style="font-size: 20px; margin-bottom: 10px; font-weight: 700;"></h2>
@@ -44,6 +108,12 @@ function criarModalDetalhes() {
         </div>
     `;
     document.body.appendChild(modal);
+
+    // Ativa o swipe no modal de detalhes do produto
+    const modalContainer = document.getElementById('modalImgContainer');
+    adicionarEventosSwipe(modalContainer, (direcao) => {
+        mudarFotoModal(direcao);
+    });
 }
 
 let produtoAtualModal = null;
@@ -67,7 +137,26 @@ function mudarFotoModal(direcao) {
     fotoIndexModal += direcao;
     if (fotoIndexModal >= produtoAtualModal.imagens.length) fotoIndexModal = 0;
     if (fotoIndexModal < 0) fotoIndexModal = produtoAtualModal.imagens.length - 1;
+    
     document.getElementById('modalImg').src = produtoAtualModal.imagens[fotoIndexModal];
+    atualizarModalDots();
+}
+
+function atualizarModalDots() {
+    const dotsContainer = document.getElementById('modalDotsContainer');
+    if (!dotsContainer || !produtoAtualModal) return;
+
+    if (produtoAtualModal.imagens.length > 1) {
+        let dots = '';
+        for (let i = 0; i < produtoAtualModal.imagens.length; i++) {
+            dots += `<span class="dot ${i === fotoIndexModal ? 'active' : ''}"></span>`;
+        }
+        dotsContainer.innerHTML = dots;
+        dotsContainer.style.display = 'flex';
+    } else {
+        dotsContainer.innerHTML = '';
+        dotsContainer.style.display = 'none';
+    }
 }
 
 function atualizarConteudoModal() {
@@ -85,6 +174,92 @@ function atualizarConteudoModal() {
     } else {
         divTroca.style.display = 'none';
     }
+
+    atualizarModalDots();
+}
+
+// MUDAR FOTO PELO BOTÃO DA VITRINE
+function mudarFotoCard(event, botao, direcao) {
+    event.stopPropagation();
+    const container = botao.closest('.imagem-container');
+    mudarFotoCardSwipe(container, direcao);
+}
+
+function mudarFotoCardSwipe(container, direcao) {
+    const imagens = JSON.parse(container.getAttribute('data-imagens'));
+    let indexAtual = parseInt(container.getAttribute('data-index')) || 0;
+
+    indexAtual += direcao;
+    if (indexAtual >= imagens.length) indexAtual = 0;
+    if (indexAtual < 0) indexAtual = imagens.length - 1;
+
+    atualizarFotoContainer(container, indexAtual, imagens);
+}
+
+// ATUALIZAR FOTO E BOLINHAS NO CARD
+function atualizarFotoContainer(container, indexAtual, imagens) {
+    container.setAttribute('data-index', indexAtual);
+    const img = container.querySelector('.produto-img');
+    img.src = imagens[indexAtual];
+
+    const dots = container.querySelectorAll('.dot');
+    dots.forEach((dot, idx) => {
+        if (idx === indexAtual) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+}
+
+// SISTEMA DE SWIPE AVANÇADO COM ARRASTE EM TEMPO REAL
+function adicionarEventosSwipe(container, callback) {
+    let touchStartX = 0;
+    let touchCurrentX = 0;
+    let isDragging = false;
+
+    container.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        isDragging = true;
+    }, { passive: true });
+
+    container.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        touchCurrentX = e.changedTouches[0].screenX;
+        const diff = touchCurrentX - touchStartX;
+        
+        const img = container.querySelector('.produto-img') || container.querySelector('img') || container.querySelector('#modalImg') || container.querySelector('#modalFamosoImg');
+        
+        if (img) {
+            img.style.transition = 'none';
+            img.style.transform = `translateX(${diff * 0.5}px)`;
+            img.style.opacity = Math.max(0.6, 1 - Math.abs(diff) / 500);
+        }
+    }, { passive: true });
+
+    container.addEventListener('touchend', (e) => {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const touchEndX = e.changedTouches[0].screenX;
+        const diff = touchEndX - touchStartX;
+        
+        const img = container.querySelector('.produto-img') || container.querySelector('img') || container.querySelector('#modalImg') || container.querySelector('#modalFamosoImg');
+
+        if (img) {
+            img.style.transition = 'transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease';
+            img.style.transform = 'translateX(0)';
+            img.style.opacity = '1';
+        }
+
+        if (Math.abs(diff) > 45) {
+            if (diff < 0) {
+                callback(1); // Próximo
+            } else {
+                callback(-1); // Anterior
+            }
+        }
+    }, { passive: true });
 }
 
 // CONFIGURAR BARRA DE PESQUISA EM TEMPO REAL
@@ -107,70 +282,9 @@ function configurarPesquisa() {
     });
 }
 
-// FUNÇÃO PARA GERAR OS CARDS NA TELA
-function carregarProdutos() {
-    criarModalDetalhes();
-    const grid = document.getElementById('gridProdutos');
-    if (!grid) return;
-    grid.innerHTML = "";
-
-    produtos.forEach((produto, index) => {
-        const card = document.createElement('div');
-        card.classList.add('bone-card');
-        card.setAttribute('data-categoria', produto.categoria);
-        card.style.cursor = "pointer";
-
-        let botoesTroca = '';
-        if (produto.imagens && produto.imagens.length > 1) {
-            botoesTroca = `
-                <button class="btn-slide btn-prev" onclick="mudarFotoCard(event, this, -1)">❮</button>
-                <button class="btn-slide btn-next" onclick="mudarFotoCard(event, this, 1)">❯</button>
-            `;
-        }
-
-        card.innerHTML = `
-            <div class="imagem-container" data-index="0" data-imagens='${JSON.stringify(produto.imagens)}'>
-                <img src="${produto.imagens[0]}" alt="${produto.nome}" class="produto-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&auto=format&fit=crop&q=60'">
-                ${botoesTroca}
-            </div>
-            <div class="card-conteudo">
-                <h3 class="bone-titulo">${produto.nome}</h3>
-                <p class="bone-descricao">Crochê artesanal de alta qualidade.</p>
-                <div class="preco-container">
-                    <span class="preco">${produto.preco}</span>
-                </div>
-                <span class="btn-whatsapp" style="text-align:center; display:block;">Ver Detalhes 🔍</span>
-            </div>
-        `;
-
-        card.onclick = () => abrirDetalhes(index);
-        grid.appendChild(card);
-    });
-
-    configurarPesquisa();
-    montarMenuLateral();
-}
-
-// FUNÇÃO DAS SETINHAS NO CARD DA VITRINE
-function mudarFotoCard(event, botao, direcao) {
-    event.stopPropagation();
-    const container = botao.closest('.imagem-container');
-    const img = container.querySelector('.produto-img');
-    const imagens = JSON.parse(container.getAttribute('data-imagens'));
-    let indexAtual = parseInt(container.getAttribute('data-index')) || 0;
-
-    indexAtual += direcao;
-    if (indexAtual >= imagens.length) indexAtual = 0;
-    if (indexAtual < 0) indexAtual = imagens.length - 1;
-
-    container.setAttribute('data-index', indexAtual);
-    img.src = imagens[indexAtual];
-}
-
 // FILTRAR POR CATEGORIA (MARCA)
 function filtrarCategoria(categoriaSelecionada) {
     const cards = document.querySelectorAll('.bone-card');
-
     cards.forEach(card => {
         const categoriaCard = card.getAttribute('data-categoria');
         if (categoriaSelecionada === 'todos' || categoriaCard === categoriaSelecionada) {
@@ -181,7 +295,7 @@ function filtrarCategoria(categoriaSelecionada) {
     });
 }
 
-// ABRIR E FECHAR A GAVETA LATERAL
+// ABRIR E FECHAR GAVETA LATERAL
 function toggleMenuLateral() {
     const aba = document.getElementById('abaLateral');
     const overlay = document.getElementById('overlayMenu');
@@ -189,7 +303,7 @@ function toggleMenuLateral() {
     overlay.classList.toggle('ativo');
 }
 
-// CRIAR OS BOTÕES NA ABA LATERAL CONTANDO OS PRODUTOS AUTOMATICAMENTE
+// MONTAR MENU LATERAL COM CONTAGEM E CYCLONE
 function montarMenuLateral() {
     const container = document.getElementById('listaFiltrosLateral');
     if (!container) return;
@@ -207,7 +321,7 @@ function montarMenuLateral() {
         { id: 'grau46', nome: 'Grau 46' },
         { id: 'ecko', nome: 'Ecko' },
         { id: 'tonycountry', nome: 'Tony Country' },
-        { id: 'cyclone', nome: 'Cyclone' } // <-- ADICIONADO AQUI
+        { id: 'cyclone', nome: 'Cyclone' }
     ];
 
     container.innerHTML = "";
@@ -237,6 +351,7 @@ function montarMenuLateral() {
         container.appendChild(btn);
     });
 }
+
 window.onload = carregarProdutos;
 
 // ROLAR OS FAMOSOS COM AS SETINHAS NO TOPO
@@ -248,7 +363,7 @@ function rolarFamosos(direcao) {
 }
 
 // ==========================================
-// MODAL DOS FAMOSOS COM SETINHAS DE NAVEGAÇÃO
+// MODAL DOS FAMOSOS COM SETAS E SWIPE
 // ==========================================
 const listaFamosos = [
     { img: 'imagens/famosos/buzeira.jpg', nome: 'Buzeira' },
@@ -282,7 +397,7 @@ function criarModalFamosoContainer() {
         <div style="background: #141414; color: #fff; width: 100%; max-width: 420px; border-radius: 12px; padding: 20px; position: relative; text-align: center; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 30px rgba(0,0,0,0.8);">
             <button onclick="fecharModalFamoso()" style="position: absolute; top: 12px; right: 12px; background: #e74c3c; color: #fff; border: none; font-size: 20px; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.5); z-index: 20;">✕</button>
             
-            <div style="position: relative; margin-bottom: 15px;">
+            <div id="modalFamosoSwipeContainer" style="position: relative; margin-bottom: 15px; user-select: none;">
                 <img id="modalFamosoImg" src="" style="width: 100%; max-height: 400px; object-fit: contain; border-radius: 8px; background: #000; border: 1px solid #00ff66;">
                 
                 <button onclick="mudarFotoFamosoModal(-1)" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%); background: rgba(0,0,0,0.7); color: #fff; border: none; width: 38px; height: 38px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 16px; z-index: 10; transition: 0.2s;">❮</button>
@@ -294,6 +409,12 @@ function criarModalFamosoContainer() {
         </div>
     `;
     document.body.appendChild(modal);
+
+    // Ativa o swipe com arraste visual no modal dos MCs
+    const famosoSwipeDiv = document.getElementById('modalFamosoSwipeContainer');
+    adicionarEventosSwipe(famosoSwipeDiv, (direcao) => {
+        mudarFotoFamosoModal(direcao);
+    });
 }
 
 function abrirModalFamoso(index) {

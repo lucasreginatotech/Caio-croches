@@ -3,7 +3,7 @@ const produtosOakley = [
     {
         nome: "Boné Oakley Preto Caveira",
         categoria: "oakley",
-        preco: "R$ 300,00",
+        preco: "R$ 280,00",
         imagens: [
             "imagens/oakley/o1.jpg",
             "imagens/oakley/o2.jpg",

@@ -3,7 +3,7 @@ const produtosRedBull = [
     {
         nome: "Boné Red Bull",
         categoria: "redbull",
-        preco: "R$ 300,00",
+        preco: "R$ 350,00",
         imagens: [
             "imagens/red bull/redbull1.jpg"
         ],
