@@ -60,7 +60,7 @@ const produtosQuiksilver = [
     {
         nome: "Boné Quiksilver Roxo e Verde",
         categoria: "quiksilver",
-        preco: "R$ 260,00",
+        preco: "R$ 420,00",
         imagens: [
             "imagens/quiksilver/quiksilver-roxo-e-verde-frente.jpg",
             "imagens/quiksilver/quiksilver-roxo-e-verde-lado.jpg",
@@ -157,7 +157,7 @@ const produtosQuiksilver = [
         imagens: [
             "imagens/quiksilver/quiksilverbr1.jpg"
         ],
-        whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Azul."
+        whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Brasil."
     },
     {
         nome: "Boné Quiksilver Preto",

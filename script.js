@@ -4,6 +4,7 @@ let produtos = [];
 // FUNÇÃO PARA GERAR OS CARDS NA TELA (COM SWIPE, EFEITO DE ARRASTAR E BOLINHAS)
 function carregarProdutos() {
     produtos = [
+        ...(typeof produtosBasicos !== 'undefined' ? produtosBasicos : []),
         ...(typeof produtosQuiksilver !== 'undefined' ? produtosQuiksilver : []),
         ...(typeof produtosLV !== 'undefined' ? produtosLV : []),
         ...(typeof produtosTimes !== 'undefined' ? produtosTimes : []),
@@ -61,7 +62,6 @@ function carregarProdutos() {
         card.onclick = () => abrirDetalhes(index);
         grid.appendChild(card);
         
-        // Ativa o swipe avançado no card
         const imgContainer = card.querySelector('.imagem-container');
         adicionarEventosSwipe(imgContainer, (direcao) => {
             mudarFotoCardSwipe(card.querySelector('.imagem-container'), direcao);
@@ -109,7 +109,6 @@ function criarModalDetalhes() {
     `;
     document.body.appendChild(modal);
 
-    // Ativa o swipe no modal de detalhes do produto
     const modalContainer = document.getElementById('modalImgContainer');
     adicionarEventosSwipe(modalContainer, (direcao) => {
         mudarFotoModal(direcao);
@@ -178,7 +177,6 @@ function atualizarConteudoModal() {
     atualizarModalDots();
 }
 
-// MUDAR FOTO PELO BOTÃO DA VITRINE
 function mudarFotoCard(event, botao, direcao) {
     event.stopPropagation();
     const container = botao.closest('.imagem-container');
@@ -196,7 +194,6 @@ function mudarFotoCardSwipe(container, direcao) {
     atualizarFotoContainer(container, indexAtual, imagens);
 }
 
-// ATUALIZAR FOTO E BOLINHAS NO CARD
 function atualizarFotoContainer(container, indexAtual, imagens) {
     container.setAttribute('data-index', indexAtual);
     const img = container.querySelector('.produto-img');
@@ -212,7 +209,6 @@ function atualizarFotoContainer(container, indexAtual, imagens) {
     });
 }
 
-// SISTEMA DE SWIPE AVANÇADO COM ARRASTE EM TEMPO REAL
 function adicionarEventosSwipe(container, callback) {
     let touchStartX = 0;
     let touchCurrentX = 0;
@@ -254,15 +250,14 @@ function adicionarEventosSwipe(container, callback) {
 
         if (Math.abs(diff) > 45) {
             if (diff < 0) {
-                callback(1); // Próximo
+                callback(1);
             } else {
-                callback(-1); // Anterior
+                callback(-1);
             }
         }
     }, { passive: true });
 }
 
-// CONFIGURAR BARRA DE PESQUISA EM TEMPO REAL
 function configurarPesquisa() {
     const inputBusca = document.querySelector('input[placeholder*="Pesquisar"]');
     if (!inputBusca) return;
@@ -282,7 +277,6 @@ function configurarPesquisa() {
     });
 }
 
-// FILTRAR POR CATEGORIA (MARCA)
 function filtrarCategoria(categoriaSelecionada) {
     const cards = document.querySelectorAll('.bone-card');
     cards.forEach(card => {
@@ -295,7 +289,6 @@ function filtrarCategoria(categoriaSelecionada) {
     });
 }
 
-// ABRIR E FECHAR GAVETA LATERAL
 function toggleMenuLateral() {
     const aba = document.getElementById('abaLateral');
     const overlay = document.getElementById('overlayMenu');
@@ -303,13 +296,13 @@ function toggleMenuLateral() {
     overlay.classList.toggle('ativo');
 }
 
-// MONTAR MENU LATERAL COM CONTAGEM E CYCLONE
 function montarMenuLateral() {
     const container = document.getElementById('listaFiltrosLateral');
     if (!container) return;
 
     const categorias = [
         { id: 'todos', nome: 'Todos os Modelos' },
+        { id: 'basicos', nome: 'Básicos Lisos' },
         { id: 'quiksilver', nome: 'Quiksilver' },
         { id: 'lv', nome: 'Louis Vuitton' },
         { id: 'times', nome: 'Times' },
@@ -354,7 +347,6 @@ function montarMenuLateral() {
 
 window.onload = carregarProdutos;
 
-// ROLAR OS FAMOSOS COM AS SETINHAS NO TOPO
 function rolarFamosos(direcao) {
     const container = document.getElementById('famososScroll');
     if (container) {
@@ -362,9 +354,6 @@ function rolarFamosos(direcao) {
     }
 }
 
-// ==========================================
-// MODAL DOS FAMOSOS COM SETAS E SWIPE
-// ==========================================
 const listaFamosos = [
     { img: 'imagens/famosos/buzeira.jpg', nome: 'Buzeira' },
     { img: 'imagens/famosos/buzeira2.jpg', nome: 'Buzeira' },
@@ -410,7 +399,6 @@ function criarModalFamosoContainer() {
     `;
     document.body.appendChild(modal);
 
-    // Ativa o swipe com arraste visual no modal dos MCs
     const famosoSwipeDiv = document.getElementById('modalFamosoSwipeContainer');
     adicionarEventosSwipe(famosoSwipeDiv, (direcao) => {
         mudarFotoFamosoModal(direcao);
