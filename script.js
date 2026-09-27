@@ -28,14 +28,15 @@ function carregarProdutos() {
         const card = document.createElement('div');
         card.classList.add('bone-card');
         card.setAttribute('data-categoria', produto.categoria);
+        card.setAttribute('data-nome', produto.nome.toLocaleLowerCase('pt-BR'));
 
         let botoesTroca = '';
         let dotsHTML = '';
         
         if (produto.imagens && produto.imagens.length > 1) {
             botoesTroca = `
-                <button class="btn-slide btn-prev" onclick="mudarFotoCard(event, this, -1)">❮</button>
-                <button class="btn-slide btn-next" onclick="mudarFotoCard(event, this, 1)">❯</button>
+                <button class="btn-slide btn-prev" aria-label="Foto anterior" onclick="mudarFotoCard(event, this, -1)"><i class="fa-solid fa-arrow-left-long"></i></button>
+                <button class="btn-slide btn-next" aria-label="Próxima foto" onclick="mudarFotoCard(event, this, 1)"><i class="fa-solid fa-arrow-right-long"></i></button>
             `;
             
             let dots = '';
@@ -50,8 +51,10 @@ function carregarProdutos() {
                 <img src="${produto.imagens[0]}" alt="${produto.nome}" class="produto-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&auto=format&fit=crop&q=60'">
                 ${botoesTroca}
                 ${dotsHTML}
+                ${produto.imagens.length > 1 ? `<span class="gallery-hint"><i class="fa-solid fa-arrows-left-right"></i> DESLIZE PARA VER</span>` : ''}
             </div>
             <div class="card-conteudo">
+                <span class="card-categoria">${produto.categoria || 'coleção'}</span>
                 <h3 class="bone-titulo">${produto.nome}</h3>
                 <p class="bone-descricao">Crochê artesanal de alta qualidade.</p>
                 <span class="preco">${produto.preco}</span>
@@ -68,8 +71,16 @@ function carregarProdutos() {
         });
     });
 
-    configurarPesquisa();
     montarMenuLateral();
+    atualizarContadorProdutos();
+    inicializarCatalogoAvancado();
+}
+
+function atualizarContadorProdutos() {
+    const contador = document.getElementById('contadorProdutos');
+    if (!contador) return;
+    const visiveis = [...document.querySelectorAll('.bone-card')].filter(card => !card.hidden && card.style.display !== 'none').length;
+    contador.textContent = `${visiveis} ${visiveis === 1 ? 'modelo disponível' : 'modelos disponíveis'}`;
 }
 
 // ==========================================
@@ -79,7 +90,7 @@ function criarModalDetalhes() {
     if (document.getElementById('modalDetalhes')) return;
     const modal = document.createElement('div');
     modal.id = 'modalDetalhes';
-    modal.style.cssText = 'display:none; position:fixed; z-index:9999; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); justify-content:center; align-items:center; padding: 20px;';
+    modal.className = 'modal-detalhes';
     
     modal.innerHTML = `
         <div style="background: #1a1a1a; color: #fff; width: 100%; max-width: 500px; border-radius: 12px; padding: 25px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5); font-family: 'Montserrat', sans-serif; max-height: 90vh; overflow-y: auto;">
@@ -125,10 +136,12 @@ function abrirDetalhes(indexOriginal) {
     fotoIndexModal = 0;
     atualizarConteudoModal();
     document.getElementById('modalDetalhes').style.display = 'flex';
+    document.body.classList.add('modal-aberto');
 }
 
 function fecharModal() {
     document.getElementById('modalDetalhes').style.display = 'none';
+    document.body.classList.remove('modal-aberto');
 }
 
 function mudarFotoModal(direcao) {
@@ -179,11 +192,13 @@ function atualizarConteudoModal() {
 
 function mudarFotoCard(event, botao, direcao) {
     event.stopPropagation();
+    event.preventDefault();
     const container = botao.closest('.imagem-container');
     mudarFotoCardSwipe(container, direcao);
 }
 
 function mudarFotoCardSwipe(container, direcao) {
+    if (!container) return;
     const imagens = JSON.parse(container.getAttribute('data-imagens'));
     let indexAtual = parseInt(container.getAttribute('data-index')) || 0;
 
@@ -258,37 +273,6 @@ function adicionarEventosSwipe(container, callback) {
     }, { passive: true });
 }
 
-function configurarPesquisa() {
-    const inputBusca = document.querySelector('input[placeholder*="Pesquisar"]');
-    if (!inputBusca) return;
-    
-    inputBusca.addEventListener('input', (e) => {
-        const termo = e.target.value.toLowerCase().trim();
-        const cards = document.querySelectorAll('.bone-card');
-        
-        cards.forEach(card => {
-            const titulo = card.querySelector('.bone-titulo').innerText.toLowerCase();
-            if (titulo.includes(termo)) {
-                card.style.display = "flex";
-            } else {
-                card.style.display = "none";
-            }
-        });
-    });
-}
-
-function filtrarCategoria(categoriaSelecionada) {
-    const cards = document.querySelectorAll('.bone-card');
-    cards.forEach(card => {
-        const categoriaCard = card.getAttribute('data-categoria');
-        if (categoriaSelecionada === 'todos' || categoriaCard === categoriaSelecionada) {
-            card.style.display = "flex";
-        } else {
-            card.style.display = "none";
-        }
-    });
-}
-
 function toggleMenuLateral() {
     const aba = document.getElementById('abaLateral');
     const overlay = document.getElementById('overlayMenu');
@@ -329,6 +313,7 @@ function montarMenuLateral() {
 
         const btn = document.createElement('div');
         btn.className = `item-filtro-lateral ${cat.id === 'todos' ? 'ativo' : ''}`;
+        btn.dataset.categoriaFiltro = cat.id;
         btn.innerHTML = `
             <span>${cat.nome}</span>
             <span class="badge-qtd">${quantidade}</span>

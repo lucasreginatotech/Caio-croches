@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Caio Crochê | Streetwear Autoral</title>
+    <title>Caio Crochê — Streetwear artesanal</title>
+    <meta name="description" content="Bonés de crochê feitos à mão, com identidade de rua. Escolha seu modelo e peça direto pelo WhatsApp.">
     <meta name="google-site-verification" content="S76vfhNYtPNFsR1nV1IM_1eLzl5Fj9bIsYZyguMQOiA" />
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
     <!-- FontAwesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="loja.css">
 </head>
 <body>
     <!-- BOTÃO PARA ABRIR A ABA LATERAL -->
@@ -23,6 +25,14 @@
     <div class="aba-header">
         <h3>Modelos de Bonés</h3>
         <button class="btn-fechar-aba" onclick="toggleMenuLateral()">✕</button>
+    </div>
+    <div class="filtros-preco">
+        <span class="filtro-legenda">FAIXA DE PREÇO</span>
+        <div class="campos-preco">
+            <label>De R$ <input id="precoMinimo" type="number" min="0" step="10" placeholder="0" inputmode="numeric"></label>
+            <label>Até R$ <input id="precoMaximo" type="number" min="0" step="10" placeholder="sem limite" inputmode="numeric"></label>
+        </div>
+        <button class="limpar-filtros" id="limparFiltros" type="button">Limpar filtros <i class="fa-solid fa-arrow-rotate-left"></i></button>
     </div>
     <div class="aba-conteudo" id="listaFiltrosLateral">
         <!-- O JavaScript vai injetar os botões e as quantidades aqui automaticamente! -->
@@ -40,19 +50,25 @@
                 </nav>
             </div>
             
-            <p class="sub-logo">A verdadeira essência do streetwear artesanal de quebrada.</p>
+            <p class="sub-logo">Streetwear artesanal feito à mão, com identidade de rua.</p>
             
-            <!-- BOTÃO PARA ABRIR A ABA LATERAL (EM CIMA DA PESQUISA) -->
-            <button class="btn-abrir-menu" onclick="toggleMenuLateral()">
-                <i class="fa-solid fa-bars"></i> Modelos & Estoque
-            </button>
-
             <!-- BARRA DE PESQUISA INTERNA -->
             <div class="barra-pesquisa">
                 <input type="text" id="campoPesquisa" placeholder="Pesquisar modelo no site...">
             </div>
         </div>
     </header>
+
+    <section class="hero-loja">
+        <div class="container hero-conteudo">
+            <span class="hero-selo"><i class="fa-solid fa-circle"></i> FEITO À MÃO • FEITO PRA VOCÊ</span>
+            <h2>Arte que veste.<br><span>Atitude que fica.</span></h2>
+            <p>Bonés de crochê autorais, criados um a um para quem não segue o padrão.</p>
+            <a class="hero-cta" href="#vitrine">Explorar coleção <i class="fa-solid fa-arrow-down"></i></a>
+            <div class="hero-nota"><span>01 /</span> Cada peça tem sua própria história.</div>
+        </div>
+        <div class="hero-imagem" role="img" aria-label="Boné Louis Vuitton de crochê colorido"></div>
+    </section>
 
    <!-- ARTISTAS DE PESO NO TOPO (COM MODAL E SETINHAS DE NAVEGAÇÃO) -->
     <div class="container">
@@ -149,11 +165,29 @@
 
    
 
-    <!-- VITRINE DE PRODUTOS (COM O ID CORRETO: gridProdutos) -->
+    <div class="container faixa-beneficios">
+        <span><i class="fa-solid fa-hand-sparkles"></i> Produção artesanal</span>
+        <span><i class="fa-solid fa-truck-fast"></i> Entrega para todo o Brasil</span>
+        <span><i class="fa-brands fa-whatsapp"></i> Consulte prazo e frete no WhatsApp</span>
+    </div>
+
+    <!-- VITRINE DE PRODUTOS -->
     <main class="container" id="vitrine">
         <div class="secao-titulo">
-            <h2>Lançamentos Exclusivos</h2>
-            <p>Escolha seu modelo e encomende direto pelo WhatsApp</p>
+            <span class="eyebrow">A COLEÇÃO</span>
+            <h2>Seu próximo favorito.</h2>
+            <p>Peças autorais feitas à mão. Toque em um modelo para ver os detalhes.</p>
+        </div>
+        <div class="vitrine-toolbar">
+            <span id="contadorProdutos" class="contador-produtos"></span>
+            <label class="ordenar-label" for="ordenarProdutos"><i class="fa-solid fa-arrow-down-wide-short"></i> Ordenar
+                <select id="ordenarProdutos" aria-label="Ordenar produtos">
+                    <option value="preco-crescente">Menor preço</option>
+                    <option value="preco-decrescente">Maior preço</option>
+                    <option value="nome">Nome</option>
+                </select>
+            </label>
+            <button class="btn-abrir-menu" onclick="toggleMenuLateral()"><i class="fa-solid fa-sliders"></i> Filtrar modelos</button>
         </div>
 
         <section class="produtos-grid" id="gridProdutos">
@@ -165,6 +199,7 @@
     <section class="secao-sobre" id="sobre">
         <div class="container sobre-box">
             <div class="sobre-texto">
+                <span class="eyebrow">FEITO COM TEMPO E INTENÇÃO</span>
                 <h2>Sobre o Caio</h2>
                 <p>O crochê deixou de ser tradição antiga e virou arte de rua. Cada peça carrega horas de dedicação, cultura de quebrada e identidade visual própria. Aqui não tem produção em massa: é exclusividade pura para quem veste originalidade.</p>
             </div>
@@ -191,5 +226,6 @@
     <script src="tonycountry.js"></script>
     <script src="nike.js"></script>
     <script src="script.js"></script>
+    <script src="catalogo.js"></script>
 </body>
 </html>
