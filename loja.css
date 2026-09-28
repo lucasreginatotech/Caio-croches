@@ -43,7 +43,10 @@ body { background: var(--fundo); color: #f4f5ef; font-family: 'Montserrat', sans
 .card-conteudo { padding: 15px; }
 .bone-titulo { font-size: .82rem; line-height: 1.4; margin-bottom: 6px; }
 .bone-descricao { color: #858a7d; font-size: .69rem; margin-bottom: 12px; }
-.preco { color: var(--verde); font-size: 1rem; margin-bottom: 12px; }
+.preco-bloco { min-height: 40px; margin-bottom: 12px; }
+.preco { color: var(--verde); font-size: 1rem; margin-bottom: 4px; }
+.preco-regulagem { display: block; color: #9ca292; font-size: .62rem; line-height: 1.4; }
+.preco-regulagem strong { color: #e5e9dc; font-weight: 700; }
 .btn-whatsapp { padding: 10px; color: #dce1d3; background: transparent; border: 1px solid #3a3e31; border-radius: 3px; font-size: .62rem; letter-spacing: .07em; }
 .btn-whatsapp:hover { color: #111; background: var(--verde); border-color: var(--verde); }
 .secao-sobre { margin-top: 25px; padding: 76px 0; background: #10120e; border-top: 1px solid #22251d; }
@@ -108,7 +111,9 @@ footer { padding: 24px 14px; color: #767b6e; background: #090a08; border-top: 1p
 #modalImgContainer { margin: 0 !important; }
 #modalImg { max-height: 70vh !important; object-fit: cover !important; background: #191b16 !important; border-radius: 3px !important; }
 #modalTitulo { font-size: clamp(1.5rem, 3vw, 2.2rem) !important; letter-spacing: -.04em; }
-#modalPreco { color: var(--verde) !important; }
+#modalPreco { color: var(--verde) !important; margin-bottom: 0 !important; }
+.modal-precos { margin-bottom: 20px; }
+#modalPrecoRegulagem { margin-top: 4px; color: #aeb49f; font-size: .8rem; }
 #modalBtnZap { background: #a9e638 !important; color: #111 !important; border-radius: 3px !important; }
 #modalBtnZap:hover { background: #c4fa61 !important; }
 #modalDetalhes > div > button[onclick="fecharModal()"] { background: rgba(16,18,12,.85) !important; border: 1px solid #b6f23b88 !important; color: #f5f6ef !important; backdrop-filter: blur(10px); }

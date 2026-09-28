@@ -4,6 +4,7 @@ const produtosCyclone = [
         nome: "Boné Cyclone Preto Estampado",
         categoria: "cyclone",
         preco: "R$ 180,00",
+        precoRegulagem: "R$ 220,00",
         imagens: [
             "imagens/cyclone/cyb1.jpg",
             "imagens/cyclone/cyb2.jpg",
@@ -15,6 +16,7 @@ const produtosCyclone = [
         nome: "Boné Cyclone Branco e Azul",
         categoria: "cyclone",
         preco: "R$ 180,00",
+        precoRegulagem: "R$ 220,00",
         imagens: [
             "imagens/cyclone/cybra1.jpg",
             "imagens/cyclone/cybra2.jpg"
@@ -25,6 +27,7 @@ const produtosCyclone = [
         nome: "Boné Cyclone Preto e Azul",
         categoria: "cyclone",
         preco: "R$ 150,00",
+        precoRegulagem: "R$ 180,00",
         imagens: [
             "imagens/cyclone/cypa1.jpg",
             "imagens/cyclone/cypa2.jpg",
@@ -36,6 +39,7 @@ const produtosCyclone = [
         nome: "Boné Cyclone Rosa",
         categoria: "cyclone",
         preco: "R$ 180,00",
+        precoRegulagem: "R$ 220,00",
         imagens: [
             "imagens/cyclone/cyr1.jpg",
             "imagens/cyclone/cyr2.jpg",
@@ -47,6 +51,7 @@ const produtosCyclone = [
         nome: "Boné Cyclone Vermelho",
         categoria: "cyclone",
         preco: "R$ 150,00",
+        precoRegulagem: "R$ 180,00",
         imagens: [
             "imagens/cyclone/cyv1.jpg",
             "imagens/cyclone/cyv2.jpg",

@@ -15,6 +15,7 @@ const produtosLacoste = [
         nome: "Boné Lacoste Branco",
         categoria: "lacoste",
         preco: "R$ 150,00",
+        precoRegulagem: "R$ 180,00",
         imagens: [
             "imagens/lacoste/lacostebr1.jpg",
             "imagens/lacoste/lacostebr2.jpg"
@@ -35,6 +36,7 @@ const produtosLacoste = [
         nome: "Boné Lacoste Preto e Verde",
         categoria: "lacoste",
         preco: "R$ 180,00",
+        precoRegulagem: "R$ 220,00",
         imagens: [
             "imagens/lacoste/lp1.jpg",
             "imagens/lacoste/lp2.jpg",
@@ -46,6 +48,7 @@ const produtosLacoste = [
         nome: "Boné Lacoste Branco 3 Cores",
         categoria: "lacoste",
         preco: "R$ 180,00",
+        precoRegulagem: "R$ 220,00",
         imagens: [
             "imagens/lacoste/lpi2.jpg",
             "imagens/lacoste/lpi1.jpg",

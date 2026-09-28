@@ -57,7 +57,10 @@ function carregarProdutos() {
                 <span class="card-categoria">${produto.categoria || 'coleção'}</span>
                 <h3 class="bone-titulo">${produto.nome}</h3>
                 <p class="bone-descricao">Crochê artesanal de alta qualidade.</p>
-                <span class="preco">${produto.preco}</span>
+                <div class="preco-bloco">
+                    <span class="preco">${produto.preco}</span>
+                    ${produto.precoRegulagem ? `<span class="preco-regulagem">ou <strong>${produto.precoRegulagem}</strong> com regulagem</span>` : ''}
+                </div>
                 <span class="btn-whatsapp">Ver Detalhes 🔍</span>
             </div>
         `;
@@ -111,7 +114,10 @@ function criarModalDetalhes() {
             <h2 id="modalTitulo" style="font-size: 20px; margin-bottom: 10px; font-weight: 700;"></h2>
             <p style="color: #aaa; font-size: 14px; margin-bottom: 15px;">Crochê artesanal de alta qualidade, feito sob encomenda.</p>
             
-            <div style="font-size: 24px; font-weight: 700; color: #25d366; margin-bottom: 20px;" id="modalPreco"></div>
+            <div class="modal-precos">
+                <div style="font-size: 24px; font-weight: 700; color: #25d366;" id="modalPreco"></div>
+                <div id="modalPrecoRegulagem"></div>
+            </div>
 
             <a id="modalBtnZap" href="" target="_blank" style="display: block; width: 100%; background: #25d366; color: #fff; text-align: center; padding: 14px; border-radius: 8px; font-weight: bold; text-decoration: none; font-size: 16px;">
                 Pedir no WhatsApp ⚡
@@ -176,9 +182,17 @@ function atualizarConteudoModal() {
     document.getElementById('modalImg').src = produtoAtualModal.imagens[0];
     document.getElementById('modalTitulo').innerText = produtoAtualModal.nome;
     document.getElementById('modalPreco').innerText = produtoAtualModal.preco;
+    const precoRegulagem = document.getElementById('modalPrecoRegulagem');
+    precoRegulagem.textContent = produtoAtualModal.precoRegulagem
+        ? `ou ${produtoAtualModal.precoRegulagem} com regulagem`
+        : '';
+    precoRegulagem.hidden = !produtoAtualModal.precoRegulagem;
     
     const btnZap = document.getElementById('modalBtnZap');
-    btnZap.href = `https://wa.me/5511948975863?text=${encodeURIComponent(produtoAtualModal.whatsapp)}`;
+    const opcoesPreco = produtoAtualModal.precoRegulagem
+        ? ` Opções: ${produtoAtualModal.preco} ou ${produtoAtualModal.precoRegulagem} com regulagem.`
+        : '';
+    btnZap.href = `https://wa.me/5511948975863?text=${encodeURIComponent(`${produtoAtualModal.whatsapp}${opcoesPreco}`)}`;
 
     const divTroca = document.getElementById('modalBotoesTroca');
     if (produtoAtualModal.imagens.length > 1) {

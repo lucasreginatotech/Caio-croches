@@ -40,6 +40,7 @@ const produtosTimes = [
         nome: "Boné Corinthians paulista ",
         categoria: "times",
         preco: "R$ 180,00",
+        precoRegulagem: "R$ 220,00",
         imagens: [
             "imagens/times/corinthianscp1.jpg",
             "imagens/times/corinthianscp2.jpg",

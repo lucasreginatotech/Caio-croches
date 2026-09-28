@@ -4,6 +4,7 @@ const produtosEcko = [
         nome: "Boné Ecko Branco",
         categoria: "ecko",
         preco: "R$ 180,00",
+        precoRegulagem: "R$ 220,00",
         imagens: [
             "imagens/ecko/eckobranco1.jpg"
         ],
@@ -13,6 +14,7 @@ const produtosEcko = [
         nome: "Boné Ecko Preto e Vermelho",
         categoria: "ecko",
         preco: "R$ 180,00",
+        precoRegulagem: "R$ 220,00",
         imagens: [
             "imagens/ecko/ec1.jpg",
             "imagens/ecko/ec2.jpg",
@@ -25,6 +27,7 @@ const produtosEcko = [
         nome: "Boné Ecko Preto e Branco",
         categoria: "ecko",
         preco: "R$ 150,00",
+        precoRegulagem: "R$ 180,00",
         imagens: [
             "imagens/ecko/ecp1.jpg"
         ],
