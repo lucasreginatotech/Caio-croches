@@ -29,6 +29,7 @@ function carregarProdutos() {
         card.classList.add('bone-card');
         card.setAttribute('data-categoria', produto.categoria);
         card.setAttribute('data-nome', produto.nome.toLocaleLowerCase('pt-BR'));
+        if (produto.negociar) card.dataset.negociar = 'true';
 
         let botoesTroca = '';
         let dotsHTML = '';
@@ -57,9 +58,9 @@ function carregarProdutos() {
                 <span class="card-categoria">${produto.categoria || 'coleção'}</span>
                 <h3 class="bone-titulo">${produto.nome}</h3>
                 <p class="bone-descricao">Crochê artesanal de alta qualidade.</p>
-                <div class="preco-bloco">
+                <div class="preco-bloco ${produto.negociar ? 'preco-negociavel' : ''}">
                     <span class="preco">${produto.preco}</span>
-                    ${produto.precoRegulagem ? `<span class="preco-regulagem">ou <strong>${produto.precoRegulagem}</strong> com regulagem</span>` : ''}
+                    ${produto.negociar ? '<span class="preco-regulagem negociacao-label">A negociar</span>' : produto.precoRegulagem ? `<span class="preco-regulagem">ou <strong>${produto.precoRegulagem}</strong> com regulagem</span>` : ''}
                 </div>
                 <span class="btn-whatsapp">Ver Detalhes 🔍</span>
             </div>
@@ -183,16 +184,19 @@ function atualizarConteudoModal() {
     document.getElementById('modalTitulo').innerText = produtoAtualModal.nome;
     document.getElementById('modalPreco').innerText = produtoAtualModal.preco;
     const precoRegulagem = document.getElementById('modalPrecoRegulagem');
-    precoRegulagem.textContent = produtoAtualModal.precoRegulagem
-        ? `ou ${produtoAtualModal.precoRegulagem} com regulagem`
-        : '';
-    precoRegulagem.hidden = !produtoAtualModal.precoRegulagem;
+    precoRegulagem.textContent = produtoAtualModal.negociar
+        ? 'A negociar pelo WhatsApp'
+        : produtoAtualModal.precoRegulagem
+            ? `ou ${produtoAtualModal.precoRegulagem} com regulagem`
+            : '';
+    precoRegulagem.hidden = !produtoAtualModal.negociar && !produtoAtualModal.precoRegulagem;
     
     const btnZap = document.getElementById('modalBtnZap');
-    const opcoesPreco = produtoAtualModal.precoRegulagem
-        ? ` Opções: ${produtoAtualModal.preco} ou ${produtoAtualModal.precoRegulagem} com regulagem.`
-        : '';
-    btnZap.href = `https://wa.me/5511948975863?text=${encodeURIComponent(`${produtoAtualModal.whatsapp}${opcoesPreco}`)}`;
+    btnZap.textContent = produtoAtualModal.negociar ? 'Negociar pelo WhatsApp' : 'Pedir no WhatsApp ⚡';
+    const mensagemWhatsapp = produtoAtualModal.negociar
+        ? `Salve Caio! Quero negociar o valor do ${produtoAtualModal.nome}.`
+        : `${produtoAtualModal.whatsapp}${produtoAtualModal.precoRegulagem ? ` Opções: ${produtoAtualModal.preco} ou ${produtoAtualModal.precoRegulagem} com regulagem.` : ''}`;
+    btnZap.href = `https://wa.me/5511948975863?text=${encodeURIComponent(mensagemWhatsapp)}`;
 
     const divTroca = document.getElementById('modalBotoesTroca');
     if (produtoAtualModal.imagens.length > 1) {

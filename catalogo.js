@@ -53,19 +53,25 @@ function aplicarFiltrosCatalogo() {
     const maximoInput = document.getElementById('precoMaximo')?.value;
     const minimo = minimoInput === '' || minimoInput == null ? 0 : Number(minimoInput);
     const maximo = maximoInput === '' || maximoInput == null ? Infinity : Number(maximoInput);
+    const faixaPrecoAtiva = (minimoInput !== '' && minimoInput != null) || (maximoInput !== '' && maximoInput != null);
     const ordenar = document.getElementById('ordenarProdutos')?.value || 'preco-crescente';
     const cards = [...grid.querySelectorAll('.bone-card')];
 
     const correspondentes = cards.filter(card => {
         const preco = obterPrecoProduto(card);
+        const negociavel = card.dataset.negociar === 'true';
         const categoriaOk = categoriaAtiva === 'todos' || card.dataset.categoria === categoriaAtiva;
         const nomeOk = (card.dataset.nome || '').includes(termo);
-        return categoriaOk && nomeOk && preco >= minimo && preco <= maximo;
+        const precoOk = negociavel ? !faixaPrecoAtiva : preco >= minimo && preco <= maximo;
+        return categoriaOk && nomeOk && precoOk;
     });
 
     correspondentes.sort((a, b) => {
-        if (ordenar === 'preco-decrescente') return obterPrecoProduto(b) - obterPrecoProduto(a);
         if (ordenar === 'nome') return (a.dataset.nome || '').localeCompare(b.dataset.nome || '', 'pt-BR');
+        const aNegociavel = a.dataset.negociar === 'true';
+        const bNegociavel = b.dataset.negociar === 'true';
+        if (aNegociavel !== bNegociavel) return aNegociavel ? 1 : -1;
+        if (ordenar === 'preco-decrescente') return obterPrecoProduto(b) - obterPrecoProduto(a);
         return obterPrecoProduto(a) - obterPrecoProduto(b);
     });
 
