@@ -3,7 +3,7 @@ const produtosQuiksilver = [
     {
         nome: "Boné Quiksilver Azul Claro",
         categoria: "quiksilver",
-        preco: "R$ 450,00",
+        preco: "R$ 299,99",
         imagens: [
             "imagens/quiksilver/quiksilver-azul-frente.jpg",
             "imagens/quiksilver/quiksilver-azul-lado.jpg",
@@ -49,7 +49,7 @@ const produtosQuiksilver = [
     {
         nome: "Boné Quiksilver Letras Vermelhas",
         categoria: "quiksilver",
-        preco: "R$ 450,00",
+        preco: "R$ 299,99",
         imagens: [
             "imagens/quiksilver/quiksilver-letras-vermelhas-na-cabeca.jpg",
             "imagens/quiksilver/quiksilver-letras-vermelhas-atras.jpg",

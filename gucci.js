@@ -72,7 +72,7 @@ const produtosGucci = [
     {
         nome: "Boné Gucci Marrom Hariel",
         categoria: "gucci",
-        preco: "R$ 450,00",
+        preco: "R$ 299,99",
         imagens: [
             "imagens/gucci/omaischave1.jpg"
         ],

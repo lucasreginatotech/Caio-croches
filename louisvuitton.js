@@ -14,7 +14,7 @@ const produtosLV = [
     {
         nome: "Boné Louis Vuitton Azul",
         categoria: "lv",
-        preco: "R$ 450,00",
+        preco: "R$ 299,99",
         imagens: [
             "imagens/lv/lvazul1.jpg",
             "imagens/lv/lvazul2.jpg"
@@ -34,7 +34,7 @@ const produtosLV = [
     {
         nome: "Boné Louis Vuitton Azul Claro e Preto",
         categoria: "lv",
-        preco: "R$ 450,00",
+        preco: "R$ 299,99",
         imagens: [
             "imagens/lv/lvazulcp1.jpg",
             "imagens/lv/lvazulcp2.jpg",
@@ -76,7 +76,7 @@ const produtosLV = [
     {
         nome: "Boné Louis Vuitton Branco Estampado",
         categoria: "lv",
-        preco: "R$ 450,00",
+        preco: "R$ 299,99",
         imagens: [
             "imagens/lv/lvbranco1.jpg"
         ],
@@ -96,7 +96,7 @@ const produtosLV = [
     {
         nome: "Boné Louis Vuitton Marrom",
         categoria: "lv",
-        preco: "R$ 450,00",
+        preco: "R$ 299,99",
         imagens: [
             "imagens/lv/lvmarrom1.jpg",
             "imagens/lv/lvmarrom2.jpg"
@@ -106,7 +106,7 @@ const produtosLV = [
     {
         nome: "Boné Louis Vuitton Marrom Claro",
         categoria: "lv",
-        preco: "R$ 450,00",
+        preco: "R$ 299,99",
         imagens: [
             "imagens/lv/lvmarromc2.jpg",
             "imagens/lv/lvmarromc1.jpg",
@@ -141,7 +141,7 @@ const produtosLV = [
     {
         nome: "Boné Louis Vuitton Vermelho",
         categoria: "lv",
-        preco: "R$ 450,00",
+        preco: "R$ 299,99",
         imagens: [
             "imagens/lv/lvvermelho1.jpg",
             "imagens/lv/lvvermelho2.jpg",
