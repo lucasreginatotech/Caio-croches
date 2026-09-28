@@ -106,7 +106,7 @@ const produtosQuiksilver = [
     {
         nome: "Boné Quiksilver Metade Metade",
         categoria: "quiksilver",
-        preco: "R$ 200,00",
+        preco: "R$ 250,00",
         precoRegulagem: "R$ 280,00",
         imagens: [
             "imagens/quiksilver/quiksilvermetademetadelogo.jpg",
