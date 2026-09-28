@@ -68,8 +68,8 @@ const produtosTonyCountry = [
         preco: "R$ 350,00",
         imagens: [
             "imagens/tony country/tonycontry1.jpg",
-            "imagens/tony country/tonycontry2.jpg",
-            "imagens/tony country/tonycontry3.jpg"
+            "imagens/tony country/tonycountry2.jpg",
+            "imagens/tony country/tonycountry3.jpg"
         ],
         whatsapp: "Salve Caio! Quero encomendar este Boné Tony Country."
     },

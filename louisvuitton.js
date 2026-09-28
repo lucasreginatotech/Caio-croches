@@ -109,8 +109,7 @@ const produtosLV = [
         preco: "R$ 299,99",
         imagens: [
             "imagens/lv/lvmarromc2.jpg",
-            "imagens/lv/lvmarromc1.jpg",
-            "imagens/lv/lvmarromc2.jpg"
+            "imagens/lv/lvmarromc1.jpg"
         ],
         whatsapp: "Salve Caio! Quero encomendar o Boné Louis Vuitton Marrom Claro."
     },

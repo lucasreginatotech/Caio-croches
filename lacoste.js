@@ -53,8 +53,7 @@ const produtosLacoste = [
         precoRegulagem: "R$ 350,00",
         imagens: [
             "imagens/lacoste/lpi2.jpg",
-            "imagens/lacoste/lpi1.jpg",
-            "imagens/lacoste/lpi2.jpg"
+            "imagens/lacoste/lpi1.jpg"
         ],
         whatsapp: "Salve Caio! Quero encomendar o Boné Lacoste Branco e Cores."
     }

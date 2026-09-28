@@ -143,7 +143,8 @@ const produtosQuiksilver = [
         preco: "R$ 180,00",
         precoRegulagem: "R$ 220,00",
         imagens: [
-            "imagens/quiksilver/quiksilverpcv1.jpg"
+            "imagens/quiksilver/quiksilverpcv1.jpg",
+            "imagens/quiksilver/quikv1.jpg"
         ],
         whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Preto e Vermelho."
     },
@@ -199,7 +200,7 @@ const produtosQuiksilver = [
             "imagens/quiksilver/quiks2.jpg",
             "imagens/quiksilver/qukisb.jpg"
         ],
-        whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Azul Estampado."
+        whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver Preto e Branco."
     },
     {
         nome: "Boné Quiksilver branco e preto",
@@ -219,8 +220,7 @@ const produtosQuiksilver = [
         imagens: [
             "imagens/quiksilver/quikla2.jpg",
             "imagens/quiksilver/quikla.jpg",
-            "imagens/quiksilver/quikla1.jpg",
-            "imagens/quiksilver/quikla2.jpg"
+            "imagens/quiksilver/quikla1.jpg"
         ],
         whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver LA."
     },
@@ -244,13 +244,4 @@ const produtosQuiksilver = [
         ],
         whatsapp: "Salve Caio! Quero encomendar o Boné Quiksilver LB."
     },
-    {
-        nome: "Boné Quiksilver Vermelho e Preto",
-        categoria: "quiksilver",
-        preco: "R$ 280,00",
-        imagens: [
-            "imagens/quiksilver/quikv1.jpg"
-        ],
-        whatsapp: "Salve Caio! Quero encomendar este Boné Quiksilver."
-    }
 ];
