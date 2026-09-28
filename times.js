@@ -39,8 +39,8 @@ const produtosTimes = [
     {
         nome: "Boné Corinthians paulista ",
         categoria: "times",
-        preco: "R$ 180,00",
-        precoRegulagem: "R$ 220,00",
+        preco: "R$ 220,00",
+        precoRegulagem: "R$ 350,00",
         imagens: [
             "imagens/times/corinthianscp1.jpg",
             "imagens/times/corinthianscp2.jpg",
