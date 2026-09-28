@@ -148,6 +148,10 @@ footer { padding: 24px 14px; color: #767b6e; background: #090a08; border-top: 1p
   .ordenar-label { font-size: .58rem; }
   .ordenar-label select { max-width: 125px; padding: 9px 8px; font-size: .64rem; }
   .vitrine-toolbar > .btn-abrir-menu { padding: 9px 10px; font-size: .58rem; }
+  .btn-slide { width: 30px !important; height: 30px !important; font-size: 10px !important; border-color: #d3ff89a8 !important; opacity: .9; }
+  .btn-prev { left: 6px !important; }
+  .btn-next { right: 6px !important; }
+  #modalBotoesTroca button { width: 32px !important; height: 32px !important; font-size: 12px !important; }
 }
 @media (hover: none) {
   .btn-slide { opacity: .94; }
