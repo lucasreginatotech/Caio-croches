@@ -39,6 +39,7 @@ const produtosCyclone = [
         nome: "Boné Cyclone Rosa",
         categoria: "cyclone",
         preco: "R$ 350,00",
+        precoRegulagem: "R$ 380,00",
         imagens: [
             "imagens/cyclone/cyr1.jpg",
             "imagens/cyclone/cyr2.jpg",
