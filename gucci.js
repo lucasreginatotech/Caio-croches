@@ -33,8 +33,8 @@ const produtosGucci = [
     {
         nome: "Boné Gucci Clássico com Faixa",
         categoria: "gucci",
-        preco: "R$ 280,00",
-        precoRegulagem: "R$ 350,00",
+        preco: "R$ 250,00",
+        precoRegulagem: "R$ 320,00",
         imagens: [
             "imagens/gucci/gcc1.jpg",
             "imagens/gucci/gcc2.jpg"
