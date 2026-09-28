@@ -5,7 +5,7 @@ const produtosTonyCountry = [
     {
         nome: "Boné Tony Country Bola Mais",
         categoria: "tonycountry",
-        preco: "R$ 260,00",
+        preco: "R$ 180,00",
         imagens: [
             "imagens/tony country/bolamais1.jpg",
             "imagens/tony country/bolamais2.jpg"
@@ -52,7 +52,7 @@ const produtosTonyCountry = [
     {
         nome: "Boné Tony Country Básico",
         categoria: "tonycountry",
-        preco: "R$ 180,00",
+        preco: "R$ 150,00",
         imagens: [
             "imagens/tony country/tonybasico2.jpg",
             "imagens/tony country/tonybasico1.jpg",
@@ -85,7 +85,7 @@ const produtosTonyCountry = [
     {
         nome: "Boné Tony Country Branco",
         categoria: "tonycountry",
-        preco: "R$ 260,00",
+        preco: "R$ 180,00",
         imagens: [
             "imagens/tony country/tonycountrybranco1.jpg"
         ],
@@ -94,7 +94,7 @@ const produtosTonyCountry = [
     {
         nome: "Boné Tony Country Preto",
         categoria: "tonycountry",
-        preco: "R$ 180,00",
+        preco: "R$ 150,00",
         imagens: [
             "imagens/tony country/tonyp1.jpg"
         ],

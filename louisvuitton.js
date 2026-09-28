@@ -3,7 +3,7 @@ const produtosLV = [
     {
         nome: "Boné Louis Vuitton All Black",
         categoria: "lv",
-        preco: "R$ 180,00",
+        preco: "R$ 150,00",
         imagens: [
             "imagens/lv/lvallblack1.jpg",
             "imagens/lv/lvallblack2.jpg"
@@ -44,7 +44,7 @@ const produtosLV = [
     {
         nome: "Boné Louis Vuitton Branco",
         categoria: "lv",
-        preco: "R$ 180,00",
+        preco: "R$ 150,00",
         imagens: [
             "imagens/lv/lvb1.jpg"
         ],
@@ -115,7 +115,7 @@ const produtosLV = [
     {
         nome: "Boné Louis Vuitton Preto",
         categoria: "lv",
-        preco: "R$ 180,00",
+        preco: "R$ 150,00",
         imagens: [
             "imagens/lv/lvp1.jpg",
             "imagens/lv/lvpreto1.jpg",
@@ -127,7 +127,7 @@ const produtosLV = [
     {
         nome: "Boné Louis Vuitton Preto e Vermelho",
         categoria: "lv",
-        preco: "R$ 180,00",
+        preco: "R$ 150,00",
         imagens: [
             "imagens/lv/lvpv1.jpg",
             "imagens/lv/lvpv2.jpg" // caso tenha espaço ou seja junto, ajusta se precisar
