@@ -62,6 +62,7 @@ function carregarProdutos() {
                     <span class="preco">${produto.preco}</span>
                     ${produto.negociar ? '<span class="preco-regulagem negociacao-label">A negociar</span>' : produto.precoRegulagem ? `<span class="preco-regulagem">ou <strong>${produto.precoRegulagem}</strong> com regulagem</span>` : ''}
                 </div>
+                <span class="card-parcelamento"><i class="fa-regular fa-credit-card"></i> Parcele em até 10x sem juros</span>
                 <span class="btn-whatsapp">Ver Detalhes 🔍</span>
             </div>
         `;
@@ -119,6 +120,7 @@ function criarModalDetalhes() {
                 <div style="font-size: 24px; font-weight: 700; color: #25d366;" id="modalPreco"></div>
                 <div id="modalPrecoRegulagem"></div>
             </div>
+            <p class="modal-parcelamento"><i class="fa-regular fa-credit-card"></i> Parcele em até 10x sem juros</p>
 
             <a id="modalBtnZap" href="" target="_blank" style="display: block; width: 100%; background: #25d366; color: #fff; text-align: center; padding: 14px; border-radius: 8px; font-weight: bold; text-decoration: none; font-size: 16px;">
                 Pedir no WhatsApp ⚡

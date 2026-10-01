@@ -3,8 +3,8 @@ const produtosLV = [
     {
         nome: "Boné Louis Vuitton All Black",
         categoria: "lv",
-        preco: "R$ 300,00",
-        precoRegulagem: "R$ 380,00",
+        preco: "R$ 150,00",
+        precoRegulagem: "R$ 180,00",
         imagens: [
             "imagens/lv/lvallblack1.jpg",
             "imagens/lv/lvallblack2.jpg"
@@ -48,8 +48,8 @@ const produtosLV = [
     {
         nome: "Boné Louis Vuitton Branco",
         categoria: "lv",
-        preco: "R$ 300,00",
-        precoRegulagem: "R$ 380,00",
+        preco: "R$ 150,00",
+        precoRegulagem: "R$ 180,00",
         imagens: [
             "imagens/lv/lvb1.jpg"
         ],
@@ -123,23 +123,23 @@ const produtosLV = [
         whatsapp: "Salve Caio! Quero encomendar o Boné Louis Vuitton Marrom Claro."
     },
     {
-        nome: "Boné Louis Vuitton Preto",
+        nome: "Boné Louis Vuitton Preto com detalhes em branco",
         categoria: "lv",
-        preco: "R$ 300,00",
-        precoRegulagem: "R$ 380,00",
+        preco: "R$ 150,00",
+        precoRegulagem: "R$ 180,00",
         imagens: [
             "imagens/lv/lvp1.jpg",
             "imagens/lv/lvpreto1.jpg",
             "imagens/lv/lvpreto2.jpg",
             "imagens/lv/lvpreto3.jpg"
         ],
-        whatsapp: "Salve Caio! Quero encomendar o Boné Louis Vuitton Preto."
+        whatsapp: "Salve Caio! Quero encomendar o Boné Louis Vuitton Preto com detalhes em branco."
     },
     {
         nome: "Boné Louis Vuitton Preto e Vermelho",
         categoria: "lv",
-        preco: "R$ 300,00",
-        precoRegulagem: "R$ 380,00",
+        preco: "R$ 150,00",
+        precoRegulagem: "R$ 180,00",
         imagens: [
             "imagens/lv/lvpv1.jpg",
             "imagens/lv/lvpv2.jpg" // caso tenha espaço ou seja junto, ajusta se precisar
