@@ -6,7 +6,7 @@
     <title>Caio Crochê — Streetwear artesanal</title>
     <meta name="description" content="Bonés de crochê feitos à mão, com identidade de rua. Escolha seu modelo e peça direto pelo WhatsApp.">
     <meta name="google-site-verification" content="S76vfhNYtPNFsR1nV1IM_1eLzl5Fj9bIsYZyguMQOiA" />
-    <!-- Google Fonts -->
+    <!-- Tipografia e ícones usados pela loja. -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet">
     <!-- FontAwesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -14,32 +14,29 @@
     <link rel="stylesheet" href="loja.css">
 </head>
 <body>
-    <!-- BOTÃO PARA ABRIR A ABA LATERAL -->
+    <!-- Camada escura que fecha o painel de filtros ao ser selecionada. -->
+    <div id="overlayMenu" class="overlay-menu" onclick="toggleMenuLateral()"></div>
 
-
-<!-- O FUNDO ESCURO (OVERLAY) QUANDO A ABA ABRE -->
-<div id="overlayMenu" class="overlay-menu" onclick="toggleMenuLateral()"></div>
-
-<!-- ABA LATERAL (DRAWER) -->
-<div id="abaLateral" class="aba-lateral">
-    <div class="aba-header">
-        <h3>Modelos de Bonés</h3>
-        <button class="btn-fechar-aba" onclick="toggleMenuLateral()">✕</button>
-    </div>
-    <div class="filtros-preco">
-        <span class="filtro-legenda">FAIXA DE PREÇO</span>
-        <div class="campos-preco">
-            <label>De R$ <input id="precoMinimo" type="number" min="0" step="10" placeholder="0" inputmode="numeric"></label>
-            <label>Até R$ <input id="precoMaximo" type="number" min="0" step="10" placeholder="sem limite" inputmode="numeric"></label>
+    <!-- Painel lateral com filtros de preço e categorias injetadas pelo JavaScript. -->
+    <div id="abaLateral" class="aba-lateral">
+        <div class="aba-header">
+            <h3>Modelos de Bonés</h3>
+            <button class="btn-fechar-aba" onclick="toggleMenuLateral()">✕</button>
         </div>
-        <button class="limpar-filtros" id="limparFiltros" type="button">Limpar filtros <i class="fa-solid fa-arrow-rotate-left"></i></button>
+        <div class="filtros-preco">
+            <span class="filtro-legenda">FAIXA DE PREÇO</span>
+            <div class="campos-preco">
+                <label>De R$ <input id="precoMinimo" type="number" min="0" step="10" placeholder="0" inputmode="numeric"></label>
+                <label>Até R$ <input id="precoMaximo" type="number" min="0" step="10" placeholder="sem limite" inputmode="numeric"></label>
+            </div>
+            <button class="limpar-filtros" id="limparFiltros" type="button">Limpar filtros <i class="fa-solid fa-arrow-rotate-left"></i></button>
+        </div>
+        <div class="aba-conteudo" id="listaFiltrosLateral">
+            <!-- O JavaScript vai injetar os botões e as quantidades aqui automaticamente! -->
+        </div>
     </div>
-    <div class="aba-conteudo" id="listaFiltrosLateral">
-        <!-- O JavaScript vai injetar os botões e as quantidades aqui automaticamente! -->
-    </div>
-</div>
 
-   <!-- CABEÇALHO E MENU DE NAVEGAÇÃO -->
+    <!-- Cabeçalho da loja: identidade, navegação e pesquisa. -->
     <header class="header-loja">
         <div class="container">
             <div class="nav-topo">
@@ -49,9 +46,9 @@
                     <a href="#sobre">Sobre Mim</a>
                 </nav>
             </div>
-            
+
             <p class="sub-logo">Streetwear artesanal feito à mão, com identidade de rua.</p>
-            
+
             <!-- BARRA DE PESQUISA INTERNA -->
             <div class="barra-pesquisa">
                 <input type="text" id="campoPesquisa" placeholder="Pesquisar modelo no site...">
@@ -59,6 +56,7 @@
         </div>
     </header>
 
+    <!-- Apresentação principal da coleção e acesso rápido à vitrine. -->
     <section class="hero-loja">
         <div class="container hero-conteudo">
             <span class="hero-selo"><i class="fa-solid fa-circle"></i> FEITO À MÃO • FEITO PRA VOCÊ</span>
@@ -70,15 +68,15 @@
         <div class="hero-imagem" role="img" aria-label="Boné Louis Vuitton de crochê colorido"></div>
     </section>
 
-   <!-- ARTISTAS DE PESO NO TOPO (COM MODAL E SETINHAS DE NAVEGAÇÃO) -->
+    <!-- Galeria horizontal de referências; cada item abre uma foto ampliada. -->
     <div class="container">
         <div class="secao-titulo" style="margin-top: 15px; margin-bottom: 8px;">
             <h2>Artistas de Peso</h2>
         </div>
-        
+
         <div class="famosos-container-wrapper">
             <button class="btn-slide-famosos btn-prev-famosos" onclick="rolarFamosos(-1)">❮</button>
-            
+
             <div class="famosos-topo-scroll" id="famososScroll">
                 <!-- Buzeira -->
                 <div class="famoso-card-topo" onclick="abrirModalFamoso(0)">
@@ -163,15 +161,16 @@
         </div>
     </div>
 
-   
 
+
+    <!-- Informações rápidas sobre produção, entrega e atendimento. -->
     <div class="container faixa-beneficios">
         <span><i class="fa-solid fa-hand-sparkles"></i> Produção artesanal</span>
         <span><i class="fa-solid fa-truck-fast"></i> Entrega para todo o Brasil</span>
         <span><i class="fa-brands fa-whatsapp"></i> Consulte prazo e frete no WhatsApp</span>
     </div>
 
-    <!-- VITRINE DE PRODUTOS -->
+    <!-- Catálogo: título, ordenação, filtros e cards criados pelo script.js. -->
     <main class="container" id="vitrine">
         <div class="secao-titulo">
             <span class="eyebrow">A COLEÇÃO</span>
@@ -195,7 +194,7 @@
         </section>
     </main>
 
-    <!-- SEÇÃO SOBRE MIM -->
+    <!-- História e proposta da marca. -->
     <section class="secao-sobre" id="sobre">
         <div class="container sobre-box">
             <div class="sobre-texto">
@@ -206,16 +205,16 @@
         </div>
     </section>
 
-  <!-- RODAPÉ -->
+    <!-- Créditos e informações finais da página. -->
     <footer>
         <p>&copy; 2026 Caio Crochê — Desenvolvido por Lucas Reginato. Todos os direitos reservados. Arte e atitude na quebrada. 🧢</p>
     </footer>
 
-   <!-- SCRIPTS DE MARCAS E LÓGICA -->
+    <!-- Dados dos produtos: cada arquivo define uma lista de uma marca. -->
     <script src="basicos.js"></script>
     <script src="quiksilver.js"></script>
     <script src="times.js"></script>
-    <script src="louisvuitton.js"></script> <!-- <-- Mude para louisvuitton.js (ou o nome exato que está na sua pasta) -->
+    <script src="louisvuitton.js"></script>
     <script src="lacoste.js"></script>
     <script src="cyclone.js"></script>
     <script src="redbull.js"></script>
@@ -225,6 +224,7 @@
     <script src="ecko.js"></script>
     <script src="tonycountry.js"></script>
     <script src="nike.js"></script>
+    <!-- Montagem dos componentes e controles de pesquisa/filtro. -->
     <script src="script.js"></script>
     <script src="catalogo.js"></script>
 </body>

@@ -1,4 +1,6 @@
 // LISTA DE PRODUTOS - LACOSTE
+// Cada objeto representa um modelo; imagens guarda as fotos e categoria liga o item aos filtros.
+// precoRegulagem e negociar são opcionais e controlam a exibição do preço no catálogo.
 const produtosLacoste = [
     {
         nome: "Boné Lacoste Clássico",

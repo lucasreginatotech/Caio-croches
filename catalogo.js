@@ -1,12 +1,18 @@
 // Controles da vitrine: filtros combináveis e ordenação do catálogo.
+// CONTROLES DO CATÁLOGO
+// Combina pesquisa, categoria, faixa de preço e ordenação dos produtos.
+
+// Categoria selecionada no menu lateral; começa mostrando todos os modelos.
 let categoriaAtiva = 'todos';
 
+// Converte o preço exibido no card em número para permitir filtros e ordenação.
 function obterPrecoProduto(card) {
     const texto = card.querySelector('.preco')?.textContent || '';
     const valor = texto.replace(/[^\d.,]/g, '').replace(/\./g, '').replace(',', '.');
     return Number.parseFloat(valor) || 0;
 }
 
+// Liga os campos da página aos filtros e prepara o botão de limpeza.
 function inicializarCatalogoAvancado() {
     const busca = document.getElementById('campoPesquisa');
     const minimo = document.getElementById('precoMinimo');
@@ -39,11 +45,13 @@ function inicializarCatalogoAvancado() {
     aplicarFiltrosCatalogo();
 }
 
+// Atualiza a categoria escolhida pelo menu lateral.
 function filtrarCategoria(categoria) {
     categoriaAtiva = categoria;
     aplicarFiltrosCatalogo();
 }
 
+// Aplica os filtros em conjunto, ordena os cards e atualiza a contagem.
 function aplicarFiltrosCatalogo() {
     const grid = document.getElementById('gridProdutos');
     if (!grid) return;
@@ -57,6 +65,7 @@ function aplicarFiltrosCatalogo() {
     const ordenar = document.getElementById('ordenarProdutos')?.value || 'preco-crescente';
     const cards = [...grid.querySelectorAll('.bone-card')];
 
+    // Mantém apenas itens compatíveis com categoria, busca e faixa de preço.
     const correspondentes = cards.filter(card => {
         const preco = obterPrecoProduto(card);
         const negociavel = card.dataset.negociar === 'true';
@@ -66,6 +75,7 @@ function aplicarFiltrosCatalogo() {
         return categoriaOk && nomeOk && precoOk;
     });
 
+    // Organiza pelo critério escolhido e mantém itens negociáveis no fim.
     correspondentes.sort((a, b) => {
         if (ordenar === 'nome') return (a.dataset.nome || '').localeCompare(b.dataset.nome || '', 'pt-BR');
         const aNegociavel = a.dataset.negociar === 'true';

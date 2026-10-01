@@ -1,7 +1,11 @@
 // Variável global de produtos
+// INTERAÇÕES E COMPONENTES DA LOJA
+// Reúne os catálogos de cada marca e guarda o estado usado pelos componentes.
 let produtos = [];
 
 // FUNÇÃO PARA GERAR OS CARDS NA TELA (COM SWIPE, EFEITO DE ARRASTAR E BOLINHAS)
+// MONTA A VITRINE
+// Cria os cards, liga as galerias de fotos e prepara filtros e contadores.
 function carregarProdutos() {
     produtos = [
         ...(typeof produtosBasicos !== 'undefined' ? produtosBasicos : []),
@@ -88,9 +92,8 @@ function atualizarContadorProdutos() {
     contador.textContent = `${visiveis} ${visiveis === 1 ? 'modelo disponível' : 'modelos disponíveis'}`;
 }
 
-// ==========================================
-// MODAL DE DETALHES (COM BOLINHAS, SETAS E SWIPE)
-// ==========================================
+// MODAL DE PRODUTO
+// Exibe as fotos, preços e opções para pedir detalhes pelo WhatsApp.
 function criarModalDetalhes() {
     if (document.getElementById('modalDetalhes')) return;
     const modal = document.createElement('div');
@@ -138,6 +141,7 @@ function criarModalDetalhes() {
 let produtoAtualModal = null;
 let fotoIndexModal = 0;
 
+// Abre o produto selecionado e preenche o conteúdo do modal.
 function abrirDetalhes(indexOriginal) {
     const produto = produtos[indexOriginal];
     if (!produto) return;
@@ -210,6 +214,8 @@ function atualizarConteudoModal() {
     atualizarModalDots();
 }
 
+// GALERIA DOS CARDS
+// Setas e gestos laterais permitem trocar as fotos de cada boné.
 function mudarFotoCard(event, botao, direcao) {
     event.stopPropagation();
     event.preventDefault();
@@ -293,6 +299,8 @@ function adicionarEventosSwipe(container, callback) {
     }, { passive: true });
 }
 
+// MENU LATERAL E CATEGORIAS
+// Abre/fecha filtros e monta as categorias com a quantidade de produtos.
 function toggleMenuLateral() {
     const aba = document.getElementById('abaLateral');
     const overlay = document.getElementById('overlayMenu');
@@ -350,8 +358,11 @@ function montarMenuLateral() {
     });
 }
 
+// Inicializa a vitrine quando a página termina de carregar.
 window.onload = carregarProdutos;
 
+// CARROSSEL E MODAL DE REFERÊNCIAS
+// Controla a faixa horizontal e as fotos ampliadas de artistas.
 function rolarFamosos(direcao) {
     const container = document.getElementById('famososScroll');
     if (container) {
@@ -379,6 +390,7 @@ const listaFamosos = [
     { img: 'imagens/famosos/mccebezinho.jpg', nome: 'MC Cebebinho' }
 ];
 
+// Posição atual da foto aberta no modal de referências.
 let indexFamosoModalAtual = 0;
 
 function criarModalFamosoContainer() {
