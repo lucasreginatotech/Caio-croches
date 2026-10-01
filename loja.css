@@ -48,7 +48,7 @@ body { background: var(--fundo); color: #f4f5ef; font-family: 'Montserrat', sans
 .preco-regulagem { display: block; color: #9ca292; font-size: .62rem; line-height: 1.4; }
 .preco-regulagem strong { color: #e5e9dc; font-weight: 700; }
 .negociacao-label { width: fit-content; padding: 3px 7px; color: var(--verde); border: 1px solid #b6f23b55; border-radius: 2px; font-size: .56rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
-.card-parcelamento { display: block; margin: -5px 0 12px; color: #afb89f; font-size: .55rem; letter-spacing: .015em; }
+.card-parcelamento { display: block; margin: -5px 0 12px; color: #afb89f; font-size: .6rem; letter-spacing: .015em; }
 .card-parcelamento i, .modal-parcelamento i { margin-right: 4px; color: var(--verde); }
 .btn-whatsapp { padding: 10px; color: #dce1d3; background: transparent; border: 1px solid #3a3e31; border-radius: 3px; font-size: .62rem; letter-spacing: .07em; }
 .btn-whatsapp:hover { color: #111; background: var(--verde); border-color: var(--verde); }
