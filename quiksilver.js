@@ -130,8 +130,7 @@ const produtosQuiksilver = [
     {
         nome: "Boné Quiksilver Preto e Azul",
         categoria: "quiksilver",
-        preco: "R$ 180,00",
-        precoRegulagem: "R$ 220,00",
+        preco: "R$ 280,00",
         imagens: [
             "imagens/quiksilver/quiksilverpca2.jpg",
             "imagens/quiksilver/quiksilverpca1.jpg",
