@@ -5,8 +5,7 @@ const produtosEcko = [
     {
         nome: "Boné Ecko Branco",
         categoria: "ecko",
-        preco: "R$ 180,00",
-        precoRegulagem: "R$ 220,00",
+        preco: "R$ 280,00",
         imagens: [
             "imagens/ecko/eckobranco1.jpg"
         ],
